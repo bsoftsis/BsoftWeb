@@ -1,0 +1,27 @@
+﻿@{
+    ViewBag.Title = "Contacto";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+
+<form action="/Home/" method="post" class=form-horizontal role="form">
+     <div class="col-md-4">
+        <div class="form-group">
+            <label for="razon">Razon Social</label>
+            <input type="text" class="form-control" id="razon" maxlength="100">
+            <label for="email">Direccion email</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com">
+        </div>
+    </div>
+    <div class="col-md-8">
+        <div class="form-group">
+            <label for="mensaje">Escribenos tu inquietud</label>
+            <textarea class="form-control" id="mensaje" rows="10" maxlength="250" ></textarea>
+            
+            <button type="submit" class="btn btn-danger" onclick="EnviarCorreo()">Enviar</button>
+        </div>
+    </div>
+   
+</form>
+
+
