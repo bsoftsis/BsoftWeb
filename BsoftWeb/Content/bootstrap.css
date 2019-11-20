@@ -61,7 +61,7 @@ body {
   margin: 0;
   /*reglas definidas por mi*/
   
-  background-image: url("/content/images/fondo1.jpg");
+  background-image: url("/content/images/fondo3.jpg");
   background-color:transparent;
   background-attachment:fixed;
  
@@ -331,6 +331,18 @@ body {
   line-height: 1.428571429;
   color: #333333;
   background-color: #ffffff;
+    /*reglas definidas por mi*/
+  
+  background-image: url("/content/images/fondo3.jpg");
+  background-color:transparent;
+  background-attachment:fixed;
+ 
+  height:100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat:no-repeat;
+
+  /*------------------------*/
 }
 
 input,

@@ -4,125 +4,116 @@
 <div class="jumbotron">
     <h2>@ViewBag.Title.</h2>
     <h3>@ViewBag.Message</h3>
-    
-    <div class="text-center">
-        <H2>Miembros:</H2>
+</div>
 
-        <img width="100" height="120" class="img-fluid img-circle" alt="florencia" src="~/Content/Images/florencia.jpg" />
-
-        <H3 class="btn-danger">
-            Lagoria García, Florencia
-        </H3>
-
-        <p>
-            Jefa Sector Analisis de Sistemas
-        </p>
-
-        <img width="100" height="120" class="img-fluid img-circle" alt="romina" src="~/Content/Images/romina.jpg" />
-
-        <H3 class="btn-danger">
-            Mamaní, Romina
-        </H3>
-
-        <p>
-            Gerente Depto Prodcucion
-        </p>
-
-        <img width="100" height="120" class="img-fluid img-circle" alt="pablo" src="~/Content/Images/pablo.jpg" />
-
-        <H3 class="btn-danger">
-            Roda, Pablo José
-        </H3>
-
-        <p>
-            Jefe Sector Testing de Sistema
-        </p>
-        <img width="100" height="100" class="img-fluid img-circle" alt="cristian" src="~/Content/Images/cristian.jpg" />
-
-        <H3 class="btn-danger">
-            Aparicio, Cristian
-        </H3>
-
-        <p>
-            Jefe Sector Diseño de Sistermas
-        </p>
-        <img width="100" height="120" class="img-fluid img-circle" alt="ana" src="~/Content/Images/ana.jpg" />
-
-        <H3 class="btn-danger">
-            Aguirre, Ana 35519
-        </H3>
-
-        <p>
-            Jefe Sector Soporte Tecnico
-        </p>
-
-        <p> 2019 - 4k3</p>
+@*la empresa*@
+<div class="text-justify">
+    <div class="text-danger">
+        <div class="col-md-4">
+            <h2>
+                <span class="label label-primary">MISIÓN</span>
+            </h2>
+            <p>
+                <strong>BSOFT S.A.S </strong>
+                es una empresa de tecnología que brinda servicios de desarrollo de software sobre
+                sistemas de gestión de ventas y facturación para PYMES.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>
+                <span class="label label-primary">VISIÓN</span>
+            </h2>
+            <p>
+                <strong>BSOFT S.A.S </strong>
+                busca ser una empresa reconocida a nivel internacional como un referente en el
+                desarrollo de software sobre sistemas de gestión de ventas y facturación, apreciada por su excelencia y
+                calidad en la prestación de sus servicios, por su compromiso con los clientes, y su interés en el desarrollo
+                profesional de sus empleados.
+            </p>
+        </div>
+        <div class="col-md-4">
+            <h2>
+                <span class="label label-primary">VALORES ORGANIZACIONALES</span>
+            </h2>
+            <p>
+                Los valores organizacionales de <strong>BSOFT S.A.S</strong> son:
+            </p>
+            <p>
+                <strong> Calidad:</strong> Dar a nuestros clientes el máximo de calidad de nuestros productos dando
+                cumplimiento a los requisitos de la norma a certificar.
+            </p>
+            <p>
+                <strong>Resolución: </strong>Ser altamente eficaz en resolver los problemas de nuestros clientes.
+            </p>
+            <p>
+                <strong> Compromiso:</strong> Brindar todo lo posible de nuestro equipo de desarrollo para cumplir con el
+                objetivo de nuestro cliente.
+            </p>
+            <p>
+                <strong>Confiabilidad:</strong> resguardar datos sensibles de nuestros clientes para el desarrollo del sistema
+            </p>
+        </div>
     </div>
 </div>
 
-
-    <div class="text-justify">
-        <div class="text-danger">
-            <div class="col-md-4">
-                <h2>MISIÓN</h2>
-                <p>
-                    <strong>BSOFT S.A.S </strong>
-                    es una empresa de tecnología que brinda servicios de desarrollo de software sobre
-                    sistemas de gestión de ventas y facturación para PYMES.
-                </p>
-            </div>
-        <div class="col-md-4">
-           
-
-                    <h2>
-                        VISIÓN
-                    </h2>
-                    <p>
-                        <strong>BSOFT S.A.S </strong>
-                        busca ser una empresa reconocida a nivel internacional como un referente en el
-                        desarrollo de software sobre sistemas de gestión de ventas y facturación, apreciada por su excelencia y
-                        calidad en la prestación de sus servicios, por su compromiso con los clientes, y su interés en el desarrollo
-                        profesional de sus empleados.
-                    </p>
-                </div>
-                <div class="col-md-4">
-                    <h2>
-                        VALORES ORGANIZACIONALES
-                    </h2>
-                    <p>
-                        Los valores organizacionales de <strong>BSOFT S.A.S</strong> son:
-                    </p>
-                    <p>
-                        <strong> Calidad:</strong> Dar a nuestros clientes el máximo de calidad de nuestros productos dando
-                        cumplimiento a los requisitos de la norma a certificar.
-                    </p>
-                    <p>
-                        <strong>Resolución: </strong>Ser altamente eficaz en resolver los problemas de nuestros clientes.
-                    </p>
-                    <p>
-                        <strong> Compromiso:</strong> Brindar todo lo posible de nuestro equipo de desarrollo para cumplir con el
-                        objetivo de nuestro cliente.
-                    </p>
-                    <p>
-                        <strong>Confiabilidad:</strong> resguardar datos sensibles de nuestros clientes para el desarrollo del sistema
-                    </p>
-                </div>
-            </div>
-        </div>
-
-        @*organigrama*@
-
-<div class="col-md-12">
+@*miembros*@
+<div class="text-center">
     <h2>
-        NUESTRA ORGANIZACION
+        <span class="label label-primary">MIEMBROS</span>
     </h2>
-   
-    <img class="img-responsive" src="~/Content/Images/organigrama.png"  />
+    <img width="100" height="120" class="img-fluid img-circle" alt="florencia" src="~/Content/Images/florencia.jpg" />
+    <h3 class="btn-danger">
+        Lagoria García, Florencia
+    </h3>
+    <p>
+        Jefa Sector Analisis de Sistemas
+    </p>
+    <img width="100" height="120" class="img-fluid img-circle" alt="romina" src="~/Content/Images/romina.jpg" />
+    <h3 class="btn-danger">
+        Mamaní, Romina
+    </h3>
+    <p>
+        Gerente Depto Produccion
+    </p>
+    <img width="100" height="120" class="img-fluid img-circle" alt="pablo" src="~/Content/Images/pablo.jpg" />
+    <h3 class="btn-danger">
+        Roda, Pablo José
+    </h3>
+    <p>
+        Jefe Sector Testing de Sistema
+    </p>
+    <img width="100" height="100" class="img-fluid img-circle" alt="cristian" src="~/Content/Images/cristian.jpg" />
+
+    <h3 class="btn-danger">
+        Aparicio, Cristian
+    </h3>
+    <p>
+        Jefe Sector Diseño de Sistermas
+    </p>
+    <img width="100" height="120" class="img-fluid img-circle" alt="ana" src="~/Content/Images/ana.jpg" />
+
+    <h3 class="btn-danger">
+        Aguirre, Ana 35519
+    </h3>
+    <p>
+        Jefe Sector Soporte Tecnico
+    </p>
+
+    <p> 2019 - 4k3</p>
 </div>
 
+@*organigrama*@
 <div class="col-md-12">
     <h2>
-        NUESTRAS OFICINAS
+        <span class="label label-primary">NUESTRA ORGANIZACION</span>
     </h2>
-    <img class="img-responsive"  src="~/Content/Images/oficina.jpg"/>
+    <img class="img-responsive" src="~/Content/Images/organigrama.png" />
+</div>
+
+@*oficionas*@
+<div class="col-md-12">
+    <h2>
+        <span class="label label-primary">NUESTRAS OFICINAS</span>
+    </h2>
+    <img class="img-responsive" src="~/Content/Images/oficina.jpg" />
 </div>

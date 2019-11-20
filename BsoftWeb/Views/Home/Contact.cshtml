@@ -1,29 +1,33 @@
 ﻿@{
     ViewBag.Title = "Contacto";
 }
-<h2>@ViewBag.Title.</h2>
-<h3>@ViewBag.Message</h3>
+<div class="jumbotron">
+    <h2>@ViewBag.Title.</h2>
+    <h3>@ViewBag.Message</h3>
+</div>
 
-<form method="post" class=form-horizontal role="form">
-    <div class="col-md-4">
-        <div class="form-group">
-            <label for="razon">Razon Social</label>
-            <input type="text" class="form-control" id="razon" name="razon" maxlength="100" placeholder="razon">
-            <label for="email">Direccion email</label>
-            <input type="email" class="form-control" id="email" name="email" placeholder="email">
+@*formulario de contacto*@
+<form method="post" class="form-horizontal" role="form">
+    <div class="row">
+        <div class="col-xs-3">
+            <div class="form-group">
+                <label for="razon">Razon Social</label>
+                <input type="text" class="form-control" id="razon" name="razon" placeholder="Su nombre o razon social" required>
+            </div>
+            <br>
+            <div class="form-group">
+                <label for="email">Direccion de E-mail</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="su direccion de Email" required>
+            </div>
+        </div>
+        <div class="col-xs-9">
+            <div class="form-group">
+                <label for="mensaje">Escribenos tu inquietud</label>
+                <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escriba su mensaje"></textarea>
+                <button type="submit" class="btn btn-primary" onclick="EnviarCorreo()">Enviar</button>
+            </div>
         </div>
     </div>
-    <div class="col-md-8">
-        <div class="form-group">
-            <label for="mensaje">Escribenos tu inquietud</label>
-            <textarea class="form-control" id="mensaje" name="mensaje" rows="10" maxlength="250" placeholder="Escriba su mensaje"></textarea>
-            <textarea class="form-control" id="mensaje" name="mensaje" rows="10" maxlength="250" placeholder="Escriba su mensaje"></textarea>
-
-            <button type="submit" class="btn btn-danger" onclick="EnviarCorreo()">Enviar</button>
-        </div>
-    </div>
-   
 </form>
-
 
 

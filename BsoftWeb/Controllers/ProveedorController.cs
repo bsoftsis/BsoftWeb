@@ -6,13 +6,13 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using BsoftWeb;
+using BsoftWeb.Models;
 
 namespace BsoftWeb.Controllers
 {
     public class ProveedorController : Controller
     {
-        private BsoftDBEntities db = new BsoftDBEntities();
+        private BsoftEntities db = new BsoftEntities();
 
         // GET: Proveedor
         public ActionResult Index()

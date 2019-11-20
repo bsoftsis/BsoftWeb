@@ -169,66 +169,74 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Compra.cs">
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CompraController.cs" />
+    <Compile Include="Controllers\EquipamientoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\EnConstruccionController.cs" />
+    <Compile Include="Controllers\PerfilUsuarioController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
-    <Compile Include="Controllers\ProveedoresController.cs" />
+    <Compile Include="Controllers\ServicioController.cs" />
+    <Compile Include="Controllers\TecnicoProveedorController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
-    <Compile Include="DetalleCompra.cs">
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Equipamiento.cs">
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Localidad.cs">
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelBsoft.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBsoft.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelBsoft.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ModelBsoft.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>ModelBsoft.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="ModelBsoft.Views.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\BsoftDBModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BsoftDBModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BsoftDBModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\BsoftDBModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>BsoftDBModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EstadoServicio.cs" />
+    <Compile Include="Models\ValorCalidad.cs" />
+    <Compile Include="Models\Compra.cs">
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DetalleCompra.cs">
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Equipamiento.cs">
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EstadoCompra.cs" />
+    <Compile Include="Models\EstadoGeneral.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Localidad.cs">
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="PerfilUsuario.cs">
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
+    <Compile Include="Models\PerfilUsuario.cs">
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Proveedor.cs">
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Provincia.cs">
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Servicio.cs">
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TecnicoProveedor.cs">
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Usuario.cs">
+      <DependentUpon>BsoftDBModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Proveedor.cs">
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Provincia.cs">
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Servicio.cs">
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
-    </Compile>
     <Compile Include="Startup.cs" />
-    <Compile Include="TecnicoProveedor.cs">
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Usuario.cs">
-      <DependentUpon>ModelBsoft.tt</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -236,38 +244,43 @@
     <Content Include="Content\Images\ana.jpg" />
     <Content Include="Content\Images\cristian.jpg" />
     <Content Include="Content\Images\en_ construcion.jfif" />
+    <Content Include="Content\Images\facebook.jpg" />
     <Content Include="Content\Images\florencia.jpg" />
     <Content Include="Content\Images\fondo1.jpg" />
     <Content Include="Content\Images\fondo1.png" />
     <Content Include="Content\Images\fondo2.jpg" />
     <Content Include="Content\Images\fondo3.jpg" />
+    <Content Include="Content\Images\instagram.jpg" />
+    <Content Include="Content\Images\linkedin.jpg" />
     <Content Include="Content\Images\logo.jpg" />
     <Content Include="Content\Images\Oficina.jpg" />
     <Content Include="Content\Images\organigrama.png" />
     <Content Include="Content\Images\pablo.jpg" />
     <Content Include="Content\Images\romina.jpg" />
+    <Content Include="Content\Images\twitter.jpg" />
+    <Content Include="Content\RedesSociales.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="ModelBsoft.Context.tt">
+    <Content Include="Models\BsoftDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelBsoft.edmx</DependentUpon>
-      <LastGenOutput>ModelBsoft.Context.cs</LastGenOutput>
+      <DependentUpon>BsoftDBModel.edmx</DependentUpon>
+      <LastGenOutput>BsoftDBModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="ModelBsoft.tt">
+    <Content Include="Models\BsoftDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>ModelBsoft.edmx</DependentUpon>
-      <LastGenOutput>ModelBsoft.cs</LastGenOutput>
+      <DependentUpon>BsoftDBModel.edmx</DependentUpon>
+      <LastGenOutput>BsoftDBModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="ModelBsoft.edmx">
+    <EntityDeploy Include="Models\BsoftDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>ModelBsoft.Designer.cs</LastGenOutput>
+      <LastGenOutput>BsoftDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="ModelBsoft.edmx.diagram">
-      <DependentUpon>ModelBsoft.edmx</DependentUpon>
+    <Content Include="Models\BsoftDBModel.edmx.diagram">
+      <DependentUpon>BsoftDBModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\bsoftweb.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -318,21 +331,48 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index - Copia.cshtml" />
     <Content Include="Views\Shared\_Layout - Copia.cshtml" />
-    <Content Include="Views\Proveedores\Index.cshtml" />
-    <Content Include="Views\Proveedor\Create.cshtml" />
-    <Content Include="Views\Proveedor\Delete.cshtml" />
-    <Content Include="Views\Proveedor\Details.cshtml" />
-    <Content Include="Views\Proveedor\Edit.cshtml" />
-    <Content Include="Views\Proveedor\Index.cshtml" />
+    <Content Include="Views\EnConstruccion\Index.cshtml" />
+    <Content Include="Views\Shared\_RedesPartial.cshtml" />
+    <Content Include="Views\PerfilUsuario\Create.cshtml" />
+    <Content Include="Views\PerfilUsuario\Delete.cshtml" />
+    <Content Include="Views\PerfilUsuario\Details.cshtml" />
+    <Content Include="Views\PerfilUsuario\Edit.cshtml" />
+    <Content Include="Views\PerfilUsuario\Index.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\EditTemplates\DateTimes.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Delete.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
+    <Content Include="Views\Equipamiento\Create.cshtml" />
+    <Content Include="Views\Equipamiento\Delete.cshtml" />
+    <Content Include="Views\Equipamiento\Details.cshtml" />
+    <Content Include="Views\Equipamiento\Edit.cshtml" />
+    <Content Include="Views\Equipamiento\Index.cshtml" />
+    <Content Include="Views\Proveedor\Create.cshtml" />
+    <Content Include="Views\Proveedor\Delete.cshtml" />
+    <Content Include="Views\Proveedor\Details.cshtml" />
+    <Content Include="Views\Proveedor\Edit.cshtml" />
+    <Content Include="Views\Proveedor\Index.cshtml" />
+    <Content Include="Views\TecnicoProveedor\Create.cshtml" />
+    <Content Include="Views\TecnicoProveedor\Delete.cshtml" />
+    <Content Include="Views\TecnicoProveedor\Details.cshtml" />
+    <Content Include="Views\TecnicoProveedor\Edit.cshtml" />
+    <Content Include="Views\TecnicoProveedor\Index.cshtml" />
+    <Content Include="Views\Compra\Create.cshtml" />
+    <Content Include="Views\Compra\Delete.cshtml" />
+    <Content Include="Views\Compra\Details.cshtml" />
+    <Content Include="Views\Compra\Edit.cshtml" />
+    <Content Include="Views\Compra\Index.cshtml" />
+    <Content Include="Views\Servicio\Create.cshtml" />
+    <Content Include="Views\Servicio\Delete.cshtml" />
+    <Content Include="Views\Servicio\Details.cshtml" />
+    <Content Include="Views\Servicio\Edit.cshtml" />
+    <Content Include="Views\Servicio\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Content\Bootswatch_ Solar_files\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
