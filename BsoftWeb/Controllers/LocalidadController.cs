@@ -10,116 +10,112 @@ using BsoftWeb.Models;
 
 namespace BsoftWeb.Controllers
 {
-    public class ServicioController : Controller
+    public class LocalidadController : Controller
     {
         private BsoftEntities db = new BsoftEntities();
 
-        // GET: Servicio
+        // GET: Localidad
         public ActionResult Index()
         {
-            var servicio = db.Servicio.Include(s => s.TecnicoProveedor).Include(s => s.Usuario);
-            return View(servicio.ToList());
+            var localidad = db.Localidad.Include(l => l.Provincia);
+            return View(localidad.ToList());
         }
 
-        // GET: Servicio/Details/5
+        // GET: Localidad/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Servicio servicio = db.Servicio.Find(id);
-            if (servicio == null)
+            Localidad localidad = db.Localidad.Find(id);
+            if (localidad == null)
             {
                 return HttpNotFound();
             }
-            return View(servicio);
+            return View(localidad);
         }
 
-        // GET: Servicio/Create
+        // GET: Localidad/Create
         public ActionResult Create()
         {
-            ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre");
-            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario");
+            ViewBag.idProvincia = new SelectList(db.Provincia, "idProvincia", "nombreProvincia");
             return View();
         }
 
-        // POST: Servicio/Create
+        // POST: Localidad/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idServicio,nroOrden,fechaInicio,plazo,fechaFin,descripcion,calidad,estado,fechaRegistro,idTecnicoProveedor,idUsuario")] Servicio servicio)
+        public ActionResult Create([Bind(Include = "idLocalidad,nombreLocalidad,codigoPostal,idProvincia")] Localidad localidad)
         {
             if (ModelState.IsValid)
             {
-                db.Servicio.Add(servicio);
+                db.Localidad.Add(localidad);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre", servicio.idTecnicoProveedor);
-            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario", servicio.idUsuario);
-            return View(servicio);
+            ViewBag.idProvincia = new SelectList(db.Provincia, "idProvincia", "nombreProvincia", localidad.idProvincia);
+            return View(localidad);
         }
 
-        // GET: Servicio/Edit/5
+        // GET: Localidad/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Servicio servicio = db.Servicio.Find(id);
-            if (servicio == null)
+            Localidad localidad = db.Localidad.Find(id);
+            if (localidad == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre", servicio.idTecnicoProveedor);
-            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario", servicio.idUsuario);
-            return View(servicio);
+            ViewBag.idProvincia = new SelectList(db.Provincia, "idProvincia", "nombreProvincia", localidad.idProvincia);
+            return View(localidad);
         }
 
-        // POST: Servicio/Edit/5
+        // POST: Localidad/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idServicio,nroOrden,fechaInicio,plazo,fechaFin,descripcion,calidad,estado,fechaRegistro,idTecnicoProveedor,idUsuario")] Servicio servicio)
+        public ActionResult Edit([Bind(Include = "idLocalidad,nombreLocalidad,codigoPostal,idProvincia")] Localidad localidad)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(servicio).State = EntityState.Modified;
+                db.Entry(localidad).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre", servicio.idTecnicoProveedor);
-            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario", servicio.idUsuario);
-            return View(servicio);
+            ViewBag.idProvincia = new SelectList(db.Provincia, "idProvincia", "nombreProvincia", localidad.idProvincia);
+            return View(localidad);
         }
 
-        // GET: Servicio/Delete/5
+        // GET: Localidad/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Servicio servicio = db.Servicio.Find(id);
-            if (servicio == null)
+            Localidad localidad = db.Localidad.Find(id);
+            if (localidad == null)
             {
                 return HttpNotFound();
             }
-            return View(servicio);
+            return View(localidad);
         }
 
-        // POST: Servicio/Delete/5
+        // POST: Localidad/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Servicio servicio = db.Servicio.Find(id);
-            db.Servicio.Remove(servicio);
+            Localidad localidad = db.Localidad.Find(id);
+            db.Localidad.Remove(localidad);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

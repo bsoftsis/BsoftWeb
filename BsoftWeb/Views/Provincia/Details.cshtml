@@ -1,0 +1,26 @@
+﻿@model BsoftWeb.Models.Provincia
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Provincia</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.nombreProvincia)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.nombreProvincia)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idProvincia }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

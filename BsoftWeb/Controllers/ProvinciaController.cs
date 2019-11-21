@@ -10,107 +10,107 @@ using BsoftWeb.Models;
 
 namespace BsoftWeb.Controllers
 {
-    public class EquipamientoController : Controller
+    public class ProvinciaController : Controller
     {
         private BsoftEntities db = new BsoftEntities();
 
-        // GET: Equipamiento
+        // GET: Provincia
         public ActionResult Index()
         {
-            return View(db.Equipamiento.ToList());
+            return View(db.Provincia.ToList());
         }
 
-        // GET: Equipamiento/Details/5
+        // GET: Provincia/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Equipamiento equipamiento = db.Equipamiento.Find(id);
-            if (equipamiento == null)
+            Provincia provincia = db.Provincia.Find(id);
+            if (provincia == null)
             {
                 return HttpNotFound();
             }
-            return View(equipamiento);
+            return View(provincia);
         }
 
-        // GET: Equipamiento/Create
+        // GET: Provincia/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Equipamiento/Create
+        // POST: Provincia/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idEquipamiento,descripcion,stock,estado,fechaRegistro")] Equipamiento equipamiento)
+        public ActionResult Create([Bind(Include = "idProvincia,nombreProvincia")] Provincia provincia)
         {
             if (ModelState.IsValid)
             {
-                db.Equipamiento.Add(equipamiento);
+                db.Provincia.Add(provincia);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(equipamiento);
+            return View(provincia);
         }
 
-        // GET: Equipamiento/Edit/5
+        // GET: Provincia/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Equipamiento equipamiento = db.Equipamiento.Find(id);
-            if (equipamiento == null)
+            Provincia provincia = db.Provincia.Find(id);
+            if (provincia == null)
             {
                 return HttpNotFound();
             }
-            return View(equipamiento);
+            return View(provincia);
         }
 
-        // POST: Equipamiento/Edit/5
+        // POST: Provincia/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idEquipamiento,descripcion,stock,estado,fechaRegistro")] Equipamiento equipamiento)
+        public ActionResult Edit([Bind(Include = "idProvincia,nombreProvincia")] Provincia provincia)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(equipamiento).State = EntityState.Modified;
+                db.Entry(provincia).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(equipamiento);
+            return View(provincia);
         }
 
-        // GET: Equipamiento/Delete/5
+        // GET: Provincia/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Equipamiento equipamiento = db.Equipamiento.Find(id);
-            if (equipamiento == null)
+            Provincia provincia = db.Provincia.Find(id);
+            if (provincia == null)
             {
                 return HttpNotFound();
             }
-            return View(equipamiento);
+            return View(provincia);
         }
 
-        // POST: Equipamiento/Delete/5
+        // POST: Provincia/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Equipamiento equipamiento = db.Equipamiento.Find(id);
-            db.Equipamiento.Remove(equipamiento);
+            Provincia provincia = db.Provincia.Find(id);
+            db.Provincia.Remove(provincia);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

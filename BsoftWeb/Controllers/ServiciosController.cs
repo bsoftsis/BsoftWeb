@@ -10,107 +10,116 @@ using BsoftWeb.Models;
 
 namespace BsoftWeb.Controllers
 {
-    public class EquipamientoController : Controller
+    public class ServiciosController : Controller
     {
         private BsoftEntities db = new BsoftEntities();
 
-        // GET: Equipamiento
+        // GET: Servicios
         public ActionResult Index()
         {
-            return View(db.Equipamiento.ToList());
+            var servicio = db.Servicio.Include(s => s.TecnicoProveedor).Include(s => s.Usuario);
+            return View(servicio.ToList());
         }
 
-        // GET: Equipamiento/Details/5
+        // GET: Servicios/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Equipamiento equipamiento = db.Equipamiento.Find(id);
-            if (equipamiento == null)
+            Servicio servicio = db.Servicio.Find(id);
+            if (servicio == null)
             {
                 return HttpNotFound();
             }
-            return View(equipamiento);
+            return View(servicio);
         }
 
-        // GET: Equipamiento/Create
+        // GET: Servicios/Create
         public ActionResult Create()
         {
+            ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre");
+            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario");
             return View();
         }
 
-        // POST: Equipamiento/Create
+        // POST: Servicios/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "idEquipamiento,descripcion,stock,estado,fechaRegistro")] Equipamiento equipamiento)
+        public ActionResult Create([Bind(Include = "idServicio,nroOrden,fechaInicio,plazo,fechaFin,descripcion,calidad,estado,fechaRegistro,idTecnicoProveedor,idUsuario")] Servicio servicio)
         {
             if (ModelState.IsValid)
             {
-                db.Equipamiento.Add(equipamiento);
+                db.Servicio.Add(servicio);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(equipamiento);
+            ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre", servicio.idTecnicoProveedor);
+            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario", servicio.idUsuario);
+            return View(servicio);
         }
 
-        // GET: Equipamiento/Edit/5
+        // GET: Servicios/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Equipamiento equipamiento = db.Equipamiento.Find(id);
-            if (equipamiento == null)
+            Servicio servicio = db.Servicio.Find(id);
+            if (servicio == null)
             {
                 return HttpNotFound();
             }
-            return View(equipamiento);
+            ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre", servicio.idTecnicoProveedor);
+            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario", servicio.idUsuario);
+            return View(servicio);
         }
 
-        // POST: Equipamiento/Edit/5
+        // POST: Servicios/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idEquipamiento,descripcion,stock,estado,fechaRegistro")] Equipamiento equipamiento)
+        public ActionResult Edit([Bind(Include = "idServicio,nroOrden,fechaInicio,plazo,fechaFin,descripcion,calidad,estado,fechaRegistro,idTecnicoProveedor,idUsuario")] Servicio servicio)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(equipamiento).State = EntityState.Modified;
+                db.Entry(servicio).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(equipamiento);
+            ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre", servicio.idTecnicoProveedor);
+            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario", servicio.idUsuario);
+            return View(servicio);
         }
 
-        // GET: Equipamiento/Delete/5
+        // GET: Servicios/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Equipamiento equipamiento = db.Equipamiento.Find(id);
-            if (equipamiento == null)
+            Servicio servicio = db.Servicio.Find(id);
+            if (servicio == null)
             {
                 return HttpNotFound();
             }
-            return View(equipamiento);
+            return View(servicio);
         }
 
-        // POST: Equipamiento/Delete/5
+        // POST: Servicios/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Equipamiento equipamiento = db.Equipamiento.Find(id);
-            db.Equipamiento.Remove(equipamiento);
+            Servicio servicio = db.Servicio.Find(id);
+            db.Servicio.Remove(servicio);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
