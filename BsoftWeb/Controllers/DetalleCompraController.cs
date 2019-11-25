@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -12,7 +12,7 @@ namespace BsoftWeb.Controllers
 {
     public class DetalleCompraController : Controller
     {
-        private BsoftEntities db = new BsoftEntities();
+        private BsoftDBEntities db = new BsoftDBEntities();
 
         // GET: DetalleCompra
         public ActionResult Index()
@@ -89,7 +89,7 @@ namespace BsoftWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(detalleCompra).State = EntityState.Modified;
+                db.Entry(detalleCompra).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

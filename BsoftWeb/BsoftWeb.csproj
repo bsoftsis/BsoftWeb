@@ -51,6 +51,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Entity.Design" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -187,63 +189,71 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\BsoftDBModel.Context.cs">
+    <Compile Include="Models\BosftModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BsoftDBModel.Context.tt</DependentUpon>
+      <DependentUpon>BosftModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BsoftDBModel.cs">
+    <Compile Include="Models\BosftModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\BsoftDBModel.Designer.cs">
+    <Compile Include="Models\BosftModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>BsoftDBModel.edmx</DependentUpon>
+      <DependentUpon>BosftModel.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ValorCalidad.cs" />
     <Compile Include="Models\Compra.cs">
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DetalleCompra.cs">
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Equipamiento.cs">
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\Estados.cs" />
-    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\EstadoServicio.cs" />
+    <Compile Include="Models\EstadoGeneral.cs" />
     <Compile Include="Models\Localidad.cs">
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\NivelEspecialidad.cs" />
     <Compile Include="Models\PerfilUsuario.cs">
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Proveedor.cs">
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Provincia.cs">
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Servicio.cs">
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\TecnicoProveedor.cs">
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Usuario.cs">
-      <DependentUpon>BsoftDBModel.tt</DependentUpon>
+      <DependentUpon>BosftModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\NivelCalidad.cs" />
+    <Compile Include="Models\EstadoCompra.cs" />
+    <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CustomValidation\CustomValidationCUIT.cs" />
+    <Compile Include="Servicios\EncriptadorAES128.cs" />
+    <Compile Include="Servicios\HTMLSelect.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Images\ana.jpg" />
+    <Content Include="Content\Images\build.png" />
     <Content Include="Content\Images\cristian.jpg" />
+    <Content Include="Content\Images\email.png" />
     <Content Include="Content\Images\en_ construcion.jfif" />
     <Content Include="Content\Images\facebook.jpg" />
     <Content Include="Content\Images\florencia.jpg" />
@@ -257,6 +267,7 @@
     <Content Include="Content\Images\Oficina.jpg" />
     <Content Include="Content\Images\organigrama.png" />
     <Content Include="Content\Images\pablo.jpg" />
+    <Content Include="Content\Images\phone.png" />
     <Content Include="Content\Images\romina.jpg" />
     <Content Include="Content\Images\twitter.jpg" />
     <Content Include="Content\RedesSociales.css" />
@@ -264,24 +275,25 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\BsoftDBModel.Context.tt">
+    <Content Include="Models\BosftModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BsoftDBModel.edmx</DependentUpon>
-      <LastGenOutput>BsoftDBModel.Context.cs</LastGenOutput>
+      <DependentUpon>BosftModel.edmx</DependentUpon>
+      <LastGenOutput>BosftModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\BsoftDBModel.tt">
+    <Content Include="Models\BosftModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>BsoftDBModel.edmx</DependentUpon>
-      <LastGenOutput>BsoftDBModel.cs</LastGenOutput>
+      <DependentUpon>BosftModel.edmx</DependentUpon>
+      <LastGenOutput>BosftModel.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <EntityDeploy Include="Models\BsoftDBModel.edmx">
+    <Content Include="ClassDiagram1.cd" />
+    <EntityDeploy Include="Models\BosftModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>BsoftDBModel.Designer.cs</LastGenOutput>
+      <LastGenOutput>BosftModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\BsoftDBModel.edmx.diagram">
-      <DependentUpon>BsoftDBModel.edmx</DependentUpon>
+    <Content Include="Models\BosftModel.edmx.diagram">
+      <DependentUpon>BosftModel.edmx</DependentUpon>
     </Content>
     <None Include="Properties\PublishProfiles\bsoftweb.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -386,6 +398,7 @@
     <Content Include="Views\PerfilUsuario\Details.cshtml" />
     <Content Include="Views\PerfilUsuario\Edit.cshtml" />
     <Content Include="Views\PerfilUsuario\Index.cshtml" />
+    <Content Include="Views\Shared\_FechaRegistroPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

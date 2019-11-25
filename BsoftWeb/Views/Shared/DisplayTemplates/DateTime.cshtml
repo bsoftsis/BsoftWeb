@@ -1,5 +1,5 @@
-﻿@model DateTime
-@*@if (!Model.HasValue)
-{*@
-    <span> @Model.ToString("yyyy/MM/dd")</span>
-
+﻿@model DateTime?
+@if (Model.HasValue)
+    {
+        <span> @Model.Value.ToString("dd/MM/yyyyy")</span>
+    } 

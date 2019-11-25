@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BsoftWeb.Models;
+using BsoftWeb.Servicios;
 
 namespace BsoftWeb.Controllers
 {
     public class UsuarioController : Controller
     {
-        private BsoftEntities db = new BsoftEntities();
+        private BsoftDBEntities db = new BsoftDBEntities();
 
         // GET: Usuario
         public ActionResult Index()
@@ -39,6 +40,10 @@ namespace BsoftWeb.Controllers
         // GET: Usuario/Create
         public ActionResult Create()
         {
+            //para el combo de niveles de estados
+            ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoGeneral>();
+
+            //para el combo de perfiles de usuario
             ViewBag.idPerfilUsuario = new SelectList(db.PerfilUsuario, "idPerfilUsuario", "descripcion");
             return View();
         }
@@ -64,6 +69,7 @@ namespace BsoftWeb.Controllers
         // GET: Usuario/Edit/5
         public ActionResult Edit(int? id)
         {
+            EncriptadorAES128 desEnc = new EncriptadorAES128();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -73,6 +79,11 @@ namespace BsoftWeb.Controllers
             {
                 return HttpNotFound();
             }
+            //para el combo de niveles de estados
+            ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoGeneral>();
+
+            usuario.contraseña = desEnc.Desencriptar(usuario.contraseña);
+
             ViewBag.idPerfilUsuario = new SelectList(db.PerfilUsuario, "idPerfilUsuario", "descripcion", usuario.idPerfilUsuario);
             return View(usuario);
         }
@@ -86,6 +97,8 @@ namespace BsoftWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                EncriptadorAES128 enc = new EncriptadorAES128();
+                usuario.contraseña = enc.Encriptar(usuario.contraseña);
                 db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -106,6 +119,7 @@ namespace BsoftWeb.Controllers
             {
                 return HttpNotFound();
             }
+            
             return View(usuario);
         }
 

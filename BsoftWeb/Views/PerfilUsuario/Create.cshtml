@@ -1,18 +1,18 @@
 ﻿@model BsoftWeb.Models.PerfilUsuario
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Nuevo Perfil de Usuario";
 }
 
-<h2>Create</h2>
+<h2>Nuevo</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>PerfilUsuario</h4>
+        <h4>Perfil de Usuario</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
@@ -22,7 +22,7 @@
                 @Html.ValidationMessageFor(model => model.descripcion, "", new { @class = "text-danger" })
             </div>
         </div>
-
+      
         <div class="form-group">
             @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -34,22 +34,22 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fechaRegistro, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.fechaRegistro,"{ 0:dd/MM/yyyy}", new { htmlAttributes = new { @class = "form-control", @type = "date" } })
-                @Html.ValidationMessageFor(model => model.fechaRegistro, "", new { @class = "text-danger"})
+                @Html.EditorFor(model => model.estado,new { htmlAttributes= new {disabled = "disabled",
+                                @readonly = "readonly", Value = @DateTime.Now.ToString("dd/MM/yyyy"),
+                                @class = "form-control"} } )
+                @Html.HiddenFor(model => model.fechaRegistro, new { Value = @DateTime.Now.ToString("dd/MM/yyyy") })
             </div>
         </div>
-
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <button type="button" class="btn-sm">
+                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "" })
+                </button>
+                <input type="submit" value="Guardar" class="btn btn-primary btn-sm" />        
             </div>
         </div>
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

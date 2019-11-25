@@ -11,7 +11,8 @@ namespace BsoftWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Usuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,15 +23,35 @@ namespace BsoftWeb.Models
         }
     
         public int idUsuario { get; set; }
+
+        [Required(ErrorMessage = "Nombre de Usuario - Campo obligatorio")]
+        [StringLength(45)]
+        [Display(Name = "Nombre de Usuario")]
         public string nombreUsuario { get; set; }
+
+        [Required(ErrorMessage = "Contraeña - Campo obligatorio")]
+        [StringLength(8)]
+        [Display(Name = "Contraseña")]
         public string contraseña { get; set; }
+
+        [Required(ErrorMessage = "E-mail - Campo obligatorio")]
+        [StringLength(200)]
+        [Display(Name = "E-mail")]
         public string email { get; set; }
-        public string estado { get; set; }
-        public int idPerfilUsuario { get; set; }
+
+        [Required(ErrorMessage = "Estado - Campo obligatorio")]
+        [StringLength(45)]
+        [Display(Name = "Estado")]
+        public string estado { get; set; }    
+
+        [Required(ErrorMessage = "Campo obligatorio - Fecha de registro")]
+        [Display(Name = "Fecha de Registro")]
         public System.DateTime fechaRegistro { get; set; }
-    
+
+        public int idPerfilUsuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }
+
         public virtual PerfilUsuario PerfilUsuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Servicio> Servicio { get; set; }

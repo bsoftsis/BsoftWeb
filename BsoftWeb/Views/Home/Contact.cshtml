@@ -2,32 +2,59 @@
     ViewBag.Title = "Contacto";
 }
 <div class="jumbotron">
-    <h2>@ViewBag.Title.</h2>
+    <h2>@ViewBag.Title</h2>
     <h3>@ViewBag.Message</h3>
 </div>
 
 @*formulario de contacto*@
-<form method="post" class="form-horizontal" role="form">
-    <div class="row">
-        <div class="col-xs-3">
-            <div class="form-group">
-                <label for="razon">Razon Social</label>
-                <input type="text" class="form-control" id="razon" name="razon" placeholder="Su nombre o razon social" required>
-            </div>
-            <br>
-            <div class="form-group">
-                <label for="email">Direccion de E-mail</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="su direccion de Email" required>
-            </div>
-        </div>
-        <div class="col-xs-9">
-            <div class="form-group">
-                <label for="mensaje">Escribenos tu inquietud</label>
-                <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escriba su mensaje"></textarea>
-                <button type="submit" class="btn btn-primary" onclick="EnviarCorreo()">Enviar</button>
+<div class="row">
+    <div class="col-sm-8">
+        <div class="panel-success">
+            <div class="panel-header panel-body">
+                <form method="post" class="form" role="form">
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label class="control-label text-success" fro-control" for="razon">Razon Social</label>
+                            <input type="text" class="form-control" id="razon" name="razon" placeholder="Su nombre o razon social" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label text-success" for="email">Direccion de E-mail</label>
+                            <input type="email" class="form-control" id="email" name="email" placeholder="su direccion de Email" required>
+                        </div>
+                    </div>
+                    <div class="col-sm-5">
+                        <div class="form-group">
+                            <label class="control-label text-success" col-sm-2for="mensaje">Escribenos tu inquietud</label>
+                            <textarea class="form-control" id="mensaje" name="mensaje" rows="5" placeholder="Escriba su mensaje"></textarea>
+                            <br>
+                            <button type="submit" class="btn btn-primary" onclick="EnviarCorreo()">Enviar</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
-</form>
-
-
+    <div class="col-sm-4">
+        <h3 class="text-success">Contactanos </h3>
+        <p class="text-success">
+            <img class="" src="~/Content/Images/email.png" width="15" height="15" />
+            <a href="mailto:bisoftsis@gmail.com"><strong>bisoftsis@gmail.com </strong></a>
+        </p>
+        <p class="text-success">
+            <img class="" src="~/Content/Images/phone.png" width="15" height="15" />
+            +54(381) 4314050 <strong> - Ventas</strong>
+        </p>
+        <p class="text-success">
+            <img class="" src="~/Content/Images/phone.png" width="15" height="15" />
+            +54(0800) 123-321<strong> - Mesa de Ayuda</strong>
+        </p>
+        <p class="text-success">
+            <img class="" src="~/Content/Images/build.png" width="17" height="15" />
+            Rivadavia 1051, 1er Piso Depto A
+        </p>
+        <p class="text-success">
+            (4000) - S. M. de Tucuman, Argentina
+        </p>
+    </div>
+</div>

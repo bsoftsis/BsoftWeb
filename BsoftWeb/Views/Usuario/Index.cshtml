@@ -1,14 +1,16 @@
 ﻿@model IEnumerable<BsoftWeb.Models.Usuario>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista de Usuarios";
 }
 
-<h2>Index</h2>
+<h2>Lista de Usuarios</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
+<button type="button" class="btn-sm">
+    @Html.ActionLink("Nuevo Usuario", "Create")
+</button>
+
 <table class="table">
     <tr>
         <th>
@@ -32,32 +34,38 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombreUsuario)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contraseña)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaRegistro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PerfilUsuario.descripcion)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idUsuario }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idUsuario }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idUsuario })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombreUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contraseña)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PerfilUsuario.descripcion)
+            </td>
+            <td>
+                <button type="button" class="btn-sm">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idUsuario })
+                </button>
+                <button type="button" class="btn-sm">
+                    @Html.ActionLink("Detalle", "Details", new { id = item.idUsuario })
+                </button>
+                <button type="button" class="btn-sm">
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.idUsuario })
+                </button>
+        </tr>
+    }
 
 </table>

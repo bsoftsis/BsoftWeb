@@ -1,18 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BsoftWeb.Models;
+using System.Data.Entity;
 
 namespace BsoftWeb.Controllers
 {
     public class CompraController : Controller
     {
-        private BsoftEntities db = new BsoftEntities();
+        private BsoftDBEntities db = new BsoftDBEntities();
 
         // GET: Compra
         public ActionResult Index()

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -8,11 +8,15 @@ using System.Web;
 using System.Web.Mvc;
 using BsoftWeb.Models;
 
+using System.Web.UI.WebControls;
+using System.Reflection;
+using BsoftWeb.Servicios;
+
 namespace BsoftWeb.Controllers
 {
     public class TecnicoProveedorController : Controller
     {
-        private BsoftEntities db = new BsoftEntities();
+        private BsoftDBEntities db = new BsoftDBEntities();
 
         // GET: TecnicoProveedor
         public ActionResult Index()
@@ -39,9 +43,16 @@ namespace BsoftWeb.Controllers
         // GET: TecnicoProveedor/Create
         public ActionResult Create()
         {
+            //para el combo de proveedores
             ViewBag.idProveedor = new SelectList(db.Proveedor, "idProveedor", "razonSocial");
+            //para el combo de niveles de especialidad
+            ViewBag.ListaNivelEspecialidad = HTMLSelect.ToListSelectListItem<NivelEspecialidad>();
+            //para el combo de niveles de estados
+            ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoGeneral>();
+
             return View();
         }
+
 
         // POST: TecnicoProveedor/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
@@ -52,11 +63,13 @@ namespace BsoftWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                //pasa el estado de numero a cadena de caracteres
+                tecnicoProveedor.estado = Enum.GetName(typeof(EstadoGeneral),Convert.ToInt32(tecnicoProveedor.estado));
+              
                 db.TecnicoProveedor.Add(tecnicoProveedor);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
             ViewBag.idProveedor = new SelectList(db.Proveedor, "idProveedor", "razonSocial", tecnicoProveedor.idProveedor);
             return View(tecnicoProveedor);
         }

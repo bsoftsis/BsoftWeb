@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -12,7 +12,7 @@ namespace BsoftWeb.Controllers
 {
     public class ServiciosController : Controller
     {
-        private BsoftEntities db = new BsoftEntities();
+        private BsoftDBEntities db = new BsoftDBEntities();
 
         // GET: Servicios
         public ActionResult Index()

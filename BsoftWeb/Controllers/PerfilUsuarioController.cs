@@ -1,18 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BsoftWeb.Models;
+using BsoftWeb.Servicios;
 
 namespace BsoftWeb.Controllers
 {
     public class PerfilUsuarioController : Controller
     {
-        private BsoftEntities db = new BsoftEntities();
+        private BsoftDBEntities db = new BsoftDBEntities();
 
         // GET: PerfilUsuario
         public ActionResult Index()
@@ -38,6 +39,8 @@ namespace BsoftWeb.Controllers
         // GET: PerfilUsuario/Create
         public ActionResult Create()
         {
+            //para el combo de niveles de estados
+            ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoGeneral>();
             return View();
         }
 
@@ -50,6 +53,9 @@ namespace BsoftWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                //pasa el estado de numero a cadena de caracteres
+                perfilUsuario.estado = Enum.GetName(typeof(EstadoGeneral), Convert.ToInt32(perfilUsuario.estado));
+
                 db.PerfilUsuario.Add(perfilUsuario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -66,10 +72,14 @@ namespace BsoftWeb.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             PerfilUsuario perfilUsuario = db.PerfilUsuario.Find(id);
+
+
             if (perfilUsuario == null)
             {
                 return HttpNotFound();
             }
+            //para el combo de niveles de estados
+            ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoGeneral>();
             return View(perfilUsuario);
         }
 
@@ -82,6 +92,8 @@ namespace BsoftWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                //pasa el estado de numero a cadena de caracteres
+                perfilUsuario.estado = Enum.GetName(typeof(EstadoGeneral), Convert.ToInt32(perfilUsuario.estado));
                 db.Entry(perfilUsuario).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

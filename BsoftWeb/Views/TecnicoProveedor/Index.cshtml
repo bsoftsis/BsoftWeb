@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<BsoftWeb.Models.TecnicoProveedor>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Tecnicos del Proveedor";
 }
 
-<h2>Index</h2>
+<h2>Listado de Tecnicos</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Nuevo Tecnico", "Create")
 </p>
 <table class="table">
     <tr>
@@ -77,10 +77,12 @@
             @Html.DisplayFor(modelItem => item.Proveedor.razonSocial)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idTecnicoProveedor }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idTecnicoProveedor }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idTecnicoProveedor })
-        </td>
+            <button type="button" class="btn-sm">
+                @Html.ActionLink("Editar", "Edit", new { id = item.idTecnicoProveedor }) |
+                @Html.ActionLink("Detaille", "Details", new { id = item.idTecnicoProveedor }) |
+                @Html.ActionLink("Borrar", "Delete", new { id = item.idTecnicoProveedor })
+            </button>
+</td>
     </tr>
 }
 

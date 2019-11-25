@@ -11,7 +11,8 @@ namespace BsoftWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Proveedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,14 +23,26 @@ namespace BsoftWeb.Models
         }
     
         public int idProveedor { get; set; }
+
+        [Required(ErrorMessage = "Campo obligatorio")]
+        [StringLength(100)]
+        [Display(Name = "Razon Social")]
         public string razonSocial { get; set; }
+
         public string cuit { get; set; }
+
         public string domicilio { get; set; }
+
         public string telefono { get; set; }
+
         public string celular { get; set; }
+
         public string email { get; set; }
+
         public string estado { get; set; }
+
         public System.DateTime fechaRegistro { get; set; }
+
         public int idLocalidad { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

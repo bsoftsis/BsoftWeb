@@ -1,13 +1,13 @@
 ﻿@model BsoftWeb.Models.PerfilUsuario
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Detalle Perfil Usuario";
 }
 
-<h2>Details</h2>
+<h2>Detalle</h2>
 
 <div>
-    <h4>PerfilUsuario</h4>
+    <h4>Perfil de Usuario</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -37,6 +37,12 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idPerfilUsuario }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button type="button" class="btn-sm">
+        @Html.ActionLink("Cancelar", "Index", null, new { @class = "" })
+    </button>
+    <button type="button" class="btn-sm">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.idPerfilUsuario }, new { @class = "" })
+    </button>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.idPerfilUsuario }) |
+    @Html.ActionLink("Back to List", "Index")*@
 </p>
