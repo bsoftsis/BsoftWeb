@@ -20,19 +20,20 @@ namespace BsoftWeb.Models
         {
             this.Usuario = new HashSet<Usuario>();
         }
-       
+
+        [Display(Name = "Perfil Usuario")]
         public int idPerfilUsuario { get; set; }
 
-        [Required(ErrorMessage = "Campo obligatorio - Descripcion")]
+        [Required(ErrorMessage = "Descripcion - Campo obligatorio ")]
         [StringLength(45)]
         [Display(Name = "Descripcion")]
         public string descripcion { get; set; }
 
-        [Required(ErrorMessage = "Campo obligatorio - Estado")]
+        [Required(ErrorMessage = "Estado - Campo obligatorio")]
         [Display(Name = "Estado")]
         public string estado { get; set; }
 
-        [Required(ErrorMessage = "Campo obligatorio - Fecha de registro")]
+        [Required(ErrorMessage = "Fecha de registro - Campo obligatorio")]
         [Display(Name = "Fecha de Registro")]
         public System.DateTime fechaRegistro { get; set; }
     

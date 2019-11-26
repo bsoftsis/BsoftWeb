@@ -11,19 +11,54 @@ namespace BsoftWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Servicio
     {
+        [Display(Name = "Servicio")]
         public int idServicio { get; set; }
+
+        [Required(ErrorMessage = "Nro de orden de servicio - Campo obligatorio")]
+        [Display(Name ="Nro orden de servicio")]
+        [StringLength(14)]
         public string nroOrden { get; set; }
+
+        [Required(ErrorMessage = "Fecha inicio - Campo obligatorio ")]
+        [Display(Name ="Fecha inicio")]
         public System.DateTime fechaInicio { get; set; }
+
+        [Required(ErrorMessage = "Plazo - Campo obligatorio")]
+        [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un nro entero mayor a 0")]
+        [RegularExpression("^\\d+$", ErrorMessage = "El plazo debe contener sólo números enteros.")]
+        [Display(Name = "Plazo Entrega(En Dias)")]
         public int plazo { get; set; }
+
+        [Required(ErrorMessage = "Fecha fin  - Campo obligatorio")]
+        [Display(Name = "Fecha fin")]
         public System.DateTime fechaFin { get; set; }
+
+        [Required(ErrorMessage = "Descripcion - Campo obligatorio ")]
+        [Display(Name = "Descripcion ")]
+        [StringLength(200)]
         public System.DateTime descripcion { get; set; }
+
+        [Required(ErrorMessage = "Calidad servicio - Campo obligatorio")]
+        [Display(Name = "Calidad servicios")]
         public int calidad { get; set; }
+
+        [Required(ErrorMessage = "Estado - Campo obligatorio")]
+        [Display(Name = "Estado")]
+        [StringLength(45)]
         public string estado { get; set; }
+        
+        [Required(ErrorMessage = "Fecha de Resgistro - Campo obligatorio")]
+        [Display(Name = "Fecha de registro")]
         public System.DateTime fechaRegistro { get; set; }
+
+        [Display(Name = "Proveedor")]
         public int idTecnicoProveedor { get; set; }
+
+        [Display(Name = "Usuario")]
         public int idUsuario { get; set; }
     
         public virtual TecnicoProveedor TecnicoProveedor { get; set; }

@@ -11,20 +11,51 @@ namespace BsoftWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class DetalleCompra
     {
+        [Display(Name = "Detalle Compra")]
         public int idDetalleCompra { get; set; }
+
+        [Display(Name = "Compra")]
         public int idCompra { get; set; }
+
+        [Display(Name = "Equipamiento")]
         public int idEquipamiento { get; set; }
+
+        [Required(ErrorMessage = "Cantidad - Campo obligatorio")]
+        [Display(Name = "Cantidad")]
+        [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un nro valor mayor a 0")]
+        [RegularExpression("^\\d+$", ErrorMessage = "La cantidad debe contener sólo números.")]
         public int cantidad { get; set; }
+
+        [Required(ErrorMessage = "Precio compra - Campo obligatorio")]
+        [Display(Name = "Precio compra")]
+        [Range(1, float.MaxValue, ErrorMessage = "Debe ingresar un valor mayor a 0")]     
+        [RegularExpression(@"^\$?\d+(\.(\d{2}))?$", ErrorMessage = "El precio debe contener sólo números decimales.")]
         public float precioCpra { get; set; }
+
+        [Required(ErrorMessage = "Plazo de entrega - Campo obligatorio")]
+        [Display(Name = "Plazo entrega")]
+        [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un nro valor mayor a 0")]
+        [RegularExpression("^\\d+$", ErrorMessage = "El palzo de dias debe contener sólo números.")]
         public int plazoEntrega { get; set; }
+
+        [Required(ErrorMessage = "Fecha Registro- Campo obligatorio")]
+        [Display(Name = "Fecha registro")]
         public System.DateTime fechaEntrega { get; set; }
+
+        [Required(ErrorMessage = "Calidad servicio - Campo obligatorio")]
+        [Display(Name = "Calidad servicios")]
         public int calidad { get; set; }
+        
+        [Display(Name = "Observaciones")]
+        [StringLength(100)]
         public string observaciones { get; set; }
     
         public virtual Compra Compra { get; set; }
+
         public virtual Equipamiento Equipamiento { get; set; }
     }
 }

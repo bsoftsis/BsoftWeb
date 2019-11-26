@@ -11,7 +11,8 @@ namespace BsoftWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Compra
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,13 +20,33 @@ namespace BsoftWeb.Models
         {
             this.DetalleCompra = new HashSet<DetalleCompra>();
         }
-    
+
+
+        [Display(Name = "Compra")]
         public int idCompra { get; set; }
+
+        [Required(ErrorMessage = "Fecha de Compra - Campo obligatorio")]
+        [Display(Name = "Fecha de Campra")]
         public System.DateTime fechaCompra { get; set; }
+
+        [Required(ErrorMessage = "Nro de Comprobante - Campo obligatorio")]
+        [StringLength(15)]
+        [Display(Name = "Nro de Comprobante")]
         public string nroComprobante { get; set; }
+
+        [Required(ErrorMessage = "Estado - Campo obligatorio")]
+        [StringLength(45)]
+        [Display(Name = "Estado")]
         public string estado { get; set; }
+
+        [Required(ErrorMessage = "Campo obligatorio - Fecha de registro")]
+        [Display(Name = "Fecha de Registro")]
         public System.DateTime fechaRegistro { get; set; }
+
+        [Display(Name = "Proveedor")]
         public int idProveedor { get; set; }
+
+        [Display(Name = "Usuario")]
         public int idUsuario { get; set; }
     
         public virtual Proveedor Proveedor { get; set; }

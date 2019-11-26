@@ -261,6 +261,10 @@
     <Content Include="Content\Images\fondo1.png" />
     <Content Include="Content\Images\fondo2.jpg" />
     <Content Include="Content\Images\fondo3.jpg" />
+    <Content Include="Content\Images\fondo4.jpg" />
+    <Content Include="Content\Images\fondo4.png" />
+    <Content Include="Content\Images\iconos-redes-sociales-free-flat.png" />
+    <Content Include="Content\Images\iconos.jpg" />
     <Content Include="Content\Images\instagram.jpg" />
     <Content Include="Content\Images\linkedin.jpg" />
     <Content Include="Content\Images\logo.jpg" />
@@ -270,7 +274,6 @@
     <Content Include="Content\Images\phone.png" />
     <Content Include="Content\Images\romina.jpg" />
     <Content Include="Content\Images\twitter.jpg" />
-    <Content Include="Content\RedesSociales.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

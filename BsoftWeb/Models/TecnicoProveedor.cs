@@ -23,6 +23,7 @@ namespace BsoftWeb.Models
             this.Servicio = new HashSet<Servicio>();
         }
 
+        [Display(Name = "Tecnico")]
         public int idTecnicoProveedor { get; set; }
 
         [Required(ErrorMessage = "Campo obligatorio")]
@@ -35,8 +36,8 @@ namespace BsoftWeb.Models
         [Display(Name = "Apellido")]
         public string apellido { get; set; }
 
-        [CustomValidationCUIT(ErrorMessage = "El CUIT/CUIL no es valido")]
-        [Required(ErrorMessage = "Campo obligatorio - Ingresar sin guiones")]
+        [CustomValidationCUIT(ErrorMessage = "El nro de CUIL no es valido")]
+        [Required(ErrorMessage = "Nro de CUIL - Campo obligatorio - Ingresar sin guiones")]
         [StringLength(11)]
         [Display(Name = "Nro de CUIL")]
         public string cuil { get; set; }
@@ -62,6 +63,7 @@ namespace BsoftWeb.Models
         [Display(Name = "Fecha de Egreso")]
         public Nullable<System.DateTime> fechaEgreso { get; set; }
 
+        [Required(ErrorMessage = "Campo obligatorio - Fecha de registro")]
         [Display(Name = "Fecha de Registro")]
         public System.DateTime fechaRegistro { get; set; }
 

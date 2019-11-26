@@ -21,7 +21,8 @@ namespace BsoftWeb.Models
             this.Compra = new HashSet<Compra>();
             this.Servicio = new HashSet<Servicio>();
         }
-    
+
+        [Display(Name = "Usuario")]
         public int idUsuario { get; set; }
 
         [Required(ErrorMessage = "Nombre de Usuario - Campo obligatorio")]
@@ -48,7 +49,9 @@ namespace BsoftWeb.Models
         [Display(Name = "Fecha de Registro")]
         public System.DateTime fechaRegistro { get; set; }
 
+        [Display(Name = "Perfil Usuario")]
         public int idPerfilUsuario { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }
 

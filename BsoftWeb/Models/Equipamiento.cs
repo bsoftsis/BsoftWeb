@@ -11,7 +11,8 @@ namespace BsoftWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Equipamiento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,29 @@ namespace BsoftWeb.Models
         {
             this.DetalleCompra = new HashSet<DetalleCompra>();
         }
-    
+
+      
+        [Display(Name ="Equipamiento")]
         public int idEquipamiento { get; set; }
+
+        [Required(ErrorMessage = "Descripcion - Campo obligatorio")]
+        [StringLength(150)]
         public string descripcion { get; set; }
+
+        [Required(ErrorMessage = "Stock - Campo obligatorio")]
+        [Display(Name = "Stock")]
+        [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un nro entero mayor a 0")]
+        [RegularExpression("^\\d+$", ErrorMessage = "El stock debe contener sólo números.")]
         public int stock { get; set; }
+
+        [Required(ErrorMessage = "Estado - Campo obligatorio")]
+        [StringLength(45)]
+        [Display(Name ="Estado")]
         public string estado { get; set; }
+
+        [Required(ErrorMessage = "Fecha de Registro - Campo obligatorio")]
+        [StringLength(45)]
+        [Display(Name = "Fecha de Registro")]
         public System.DateTime fechaRegistro { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
