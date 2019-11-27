@@ -25,54 +25,45 @@ namespace BsoftWeb.Models
 
         [Display(Name = "Proveedor")]
         public int idProveedor { get; set; }
-
         [Required(ErrorMessage = "Razon social - Campo obligatorio")]
         [StringLength(200)]
         [Display(Name = "Razon social")]
         public string razonSocial { get; set; }
-
         [CustomValidationCUIT(ErrorMessage = "El nro de CUIT no es valido")]
         [Required(ErrorMessage = "Nro CUIT - Campo obligatorio - Ingresar sin guiones")]
         [StringLength(11)]
         [Display(Name = "Nro de CUIT")]
         public string cuit { get; set; }
-
         [Required(ErrorMessage = "Domicilio - Campo obligatorio")]
         [StringLength(200)]
         [Display(Name = "Domicilio")]
         public string domicilio { get; set; }
-
         [Required(ErrorMessage = "Telefono - Campo obligatorio")]
         [StringLength(45)]
         [Display(Name = "Nro Telefono")]
         [DisplayFormat(DataFormatString = "{0:(0###)4###-###}")]
         public string telefono { get; set; }
-
         [Required(ErrorMessage = "Celular - Campo obligatorio")]
         [StringLength(45)]
-        [Display(Name = "Nro Celular")] 
-        [DisplayFormat(DataFormatString ="{0:(0###)15###-####}")]
+        [Display(Name = "Nro Celular")]
+        [DisplayFormat(DataFormatString = "{0:(0###)15###-####}")]
         public string celular { get; set; }
-
         [Required(ErrorMessage = "Email - Campo obligatorio")]
         [StringLength(200)]
         [Display(Name = "E-mail")]
         [RegularExpression(@"^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$",
-            ErrorMessage ="Formato de correo incorrecto")]
+            ErrorMessage = "Formato de correo incorrecto")]
         public string email { get; set; }
-
         [Required(ErrorMessage = "Estado - Campo obligatorio")]
         [StringLength(45)]
         [Display(Name = "Estado")]
         public string estado { get; set; }
-
         [Required(ErrorMessage = "Campo obligatorio - Fecha de registro")]
         [Display(Name = "Fecha de Registro")]
         public System.DateTime fechaRegistro { get; set; }
-
         [Display(Name = "Localidad")]
         public int idLocalidad { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Compra> Compra { get; set; }
         public virtual Localidad Localidad { get; set; }
@@ -80,7 +71,6 @@ namespace BsoftWeb.Models
         public virtual ICollection<TecnicoProveedor> TecnicoProveedor { get; set; }
     }
 }
-
 
 //[DisplayFormat(DataFormatString = "{0:###-###-####}")]
 //public long Phone { get; set; }

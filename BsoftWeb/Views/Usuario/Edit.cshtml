@@ -1,10 +1,10 @@
 ﻿@model BsoftWeb.Models.Usuario
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar Usuario";
 }
 
-<h2>Edit</h2>
+<h2>Editar</h2>
 
 
 @using (Html.BeginForm())
@@ -73,15 +73,15 @@
                 @Html.HiddenFor(model => model.fechaRegistro, new { Value = @DateTime.Now.ToString("dd/MM/yyyy") })
             </div>
         </div>
-
-        <div class="form-group">
+        @Html.Partial("_BtnFrmCreatePartial")
+        @*<div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <button type="button" class="btn-sm">
                     @Html.ActionLink("Cancelar", "Index", null, new { @class = "" })
                 </button>
                 <input type="submit" value="Guardar" class="btn btn-primary btn-sm" />
             </div>
-        </div>
+        </div>*@
     </div>
 }
 

@@ -171,7 +171,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
-    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountController bkp.cs" />
     <Compile Include="Controllers\CompraController.cs" />
     <Compile Include="Controllers\DetalleCompraController.cs" />
     <Compile Include="Controllers\EquipamientoController.cs" />
@@ -182,7 +182,7 @@
     <Compile Include="Controllers\PerfilUsuarioController.cs" />
     <Compile Include="Controllers\ProveedorController.cs" />
     <Compile Include="Controllers\ProvinciaController.cs" />
-    <Compile Include="Controllers\ServiciosController.cs" />
+    <Compile Include="Controllers\ServicioController.cs" />
     <Compile Include="Controllers\TecnicoProveedorController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
     <Compile Include="Global.asax.cs">
@@ -243,8 +243,8 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CustomValidation\CustomValidationCUIT.cs" />
-    <Compile Include="Servicios\EncriptadorAES128.cs" />
-    <Compile Include="Servicios\HTMLSelect.cs" />
+    <Compile Include="Services\EncriptadorAES128.cs" />
+    <Compile Include="Services\HTMLSelect.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -311,14 +311,18 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="Views\Web.config" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
@@ -346,7 +350,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Index - Copia.cshtml" />
-    <Content Include="Views\Shared\_Layout - Copia.cshtml" />
     <Content Include="Views\EnConstruccion\Index.cshtml" />
     <Content Include="Views\Shared\_RedesPartial.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTime.cshtml" />
@@ -386,11 +389,11 @@
     <Content Include="Views\TecnicoProveedor\Details.cshtml" />
     <Content Include="Views\TecnicoProveedor\Edit.cshtml" />
     <Content Include="Views\TecnicoProveedor\Index.cshtml" />
-    <Content Include="Views\Servicios\Create.cshtml" />
-    <Content Include="Views\Servicios\Delete.cshtml" />
-    <Content Include="Views\Servicios\Details.cshtml" />
-    <Content Include="Views\Servicios\Edit.cshtml" />
-    <Content Include="Views\Servicios\Index.cshtml" />
+    <Content Include="Views\Servicio\Create.cshtml" />
+    <Content Include="Views\Servicio\Delete.cshtml" />
+    <Content Include="Views\Servicio\Details.cshtml" />
+    <Content Include="Views\Servicio\Edit.cshtml" />
+    <Content Include="Views\Servicio\Index.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Delete.cshtml" />
     <Content Include="Views\Usuario\Details.cshtml" />
@@ -402,6 +405,9 @@
     <Content Include="Views\PerfilUsuario\Edit.cshtml" />
     <Content Include="Views\PerfilUsuario\Index.cshtml" />
     <Content Include="Views\Shared\_FechaRegistroPartial.cshtml" />
+    <Content Include="Views\Shared\_BtnFrmCreatePartial.cshtml" />
+    <Content Include="Views\Shared\_BtnIndexNuevoPartial.cshtml" />
+    <Content Include="Views\Usuario\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -10,7 +10,7 @@ using BsoftWeb.Models;
 
 namespace BsoftWeb.Controllers
 {
-    public class ServiciosController : Controller
+    public class ServicioController : Controller
     {
         private BsoftDBEntities db = new BsoftDBEntities();
 

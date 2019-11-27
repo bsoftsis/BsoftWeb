@@ -24,11 +24,12 @@ namespace BsoftWeb.Models
         [Display(Name = "Provincia")]
         public int idProvincia { get; set; }
 
-        [Required(ErrorMessage ="Nombre Provincia - Campo obligatorio")]
+
+        [Required(ErrorMessage = "Nombre Provincia - Campo obligatorio")]
         [Display(Name = "Nombre Provincia")]
         [StringLength(45)]
         public string nombreProvincia { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Localidad> Localidad { get; set; }
     }

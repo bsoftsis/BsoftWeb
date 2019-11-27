@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<BsoftWeb.Models.Localidad>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista Localidades";
 }
 
-<h2>Index</h2>
+<h2>Lista loccalidad</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@Html.Partial("_BtnIndexNuevoPartial")
+
 <table class="table">
     <tr>
         <th>
@@ -35,9 +34,15 @@
             @Html.DisplayFor(modelItem => item.Provincia.nombreProvincia)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idLocalidad }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idLocalidad }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idLocalidad })
+            <button type="button" class="btn-sm">
+                @Html.ActionLink("Editar", "Edit", new { id = item.idLocalidad})
+            </button>
+            <button type="button" class="btn-sm">
+                @Html.ActionLink("Detalle", "Details", new { id = item.idLocalidad })
+            </button>
+            <button type="button" class="btn-sm">
+                @Html.ActionLink("Borrar", "Delete", new { id = item.idLocalidad })
+            </button>
         </td>
     </tr>
 }

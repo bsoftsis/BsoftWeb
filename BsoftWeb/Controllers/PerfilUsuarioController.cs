@@ -54,7 +54,7 @@ namespace BsoftWeb.Controllers
             if (ModelState.IsValid)
             {
                 //pasa el estado de numero a cadena de caracteres
-                perfilUsuario.estado = Enum.GetName(typeof(EstadoGeneral), Convert.ToInt32(perfilUsuario.estado));
+               // perfilUsuario.estado = Enum.GetName(typeof(EstadoGeneral), Convert.ToInt32(perfilUsuario.estado));
 
                 db.PerfilUsuario.Add(perfilUsuario);
                 db.SaveChanges();

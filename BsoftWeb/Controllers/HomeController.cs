@@ -66,9 +66,10 @@ namespace BsoftWeb.Controllers
 
                 ViewBag.Message = "Gracias por Escribirnos " + razon + "!!!!";
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
                 ViewBag.Message = "Error al Enviar mensaje. No pudo ser entregado ";
+                Console.Write(e);
             }
             return View();
         }

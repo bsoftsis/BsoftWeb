@@ -9,11 +9,10 @@
 
 namespace BsoftWeb.Models
 {
+    using CustomValidation;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using BsoftWeb.CustomValidation;
-    using System.ComponentModel;
 
     public partial class TecnicoProveedor
     {
@@ -28,7 +27,7 @@ namespace BsoftWeb.Models
 
         [Required(ErrorMessage = "Campo obligatorio")]
         [StringLength(200)]
-        [Display(Name ="Nombre")]
+        [Display(Name = "Nombre")]
         public string nombre { get; set; }
 
         [Required(ErrorMessage = "Campo obligatorio")]
@@ -44,7 +43,7 @@ namespace BsoftWeb.Models
 
         [Required(ErrorMessage = "Especialidad - Campo obligatorio")]
         [StringLength(150)]
-        [Display(Name ="Especialidad")]
+        [Display(Name = "Especialidad")]
         public string especialidad { get; set; }
 
         [Required(ErrorMessage = "Nivel Especialidad - Campo obligatorio")]
@@ -70,9 +69,7 @@ namespace BsoftWeb.Models
         [Display(Name = "Proveedor")]
         public int idProveedor { get; set; }
 
-        [Display(Name = "Proveedor")]
         public virtual Proveedor Proveedor { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Servicio> Servicio { get; set; }
     }

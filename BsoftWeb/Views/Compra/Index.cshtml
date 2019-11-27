@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<BsoftWeb.Models.Compra>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Listado Compra";
 }
 
-<h2>Index</h2>
+<h2>Lista Compra</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -53,9 +53,15 @@
             @Html.DisplayFor(modelItem => item.Usuario.nombreUsuario)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.idCompra }) |
-            @Html.ActionLink("Details", "Details", new { id=item.idCompra }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.idCompra })
+            <button type="button" class="btn-sm">
+                @Html.ActionLink("Editar", "Edit", new { id = item.idCompra })
+            </button>
+            <button type="button" class="btn-sm">
+                @Html.ActionLink("Detalle", "Details", new { id = item.idCompra })
+            </button>
+            <button type="button" class="btn-sm">
+                @Html.ActionLink("Borrar", "Delete", new { id = item.idCompra })
+            </button>
         </td>
     </tr>
 }

@@ -20,8 +20,6 @@ namespace BsoftWeb.Models
         {
             this.DetalleCompra = new HashSet<DetalleCompra>();
         }
-
-
         [Display(Name = "Compra")]
         public int idCompra { get; set; }
 
@@ -48,7 +46,8 @@ namespace BsoftWeb.Models
 
         [Display(Name = "Usuario")]
         public int idUsuario { get; set; }
-    
+
+        
         public virtual Proveedor Proveedor { get; set; }
         public virtual Usuario Usuario { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -19,20 +19,20 @@ namespace BsoftWeb.Models
         public int idServicio { get; set; }
 
         [Required(ErrorMessage = "Nro de orden de servicio - Campo obligatorio")]
-        [Display(Name ="Nro orden de servicio")]
+        [Display(Name = "Nro orden de servicio")]
         [StringLength(14)]
         public string nroOrden { get; set; }
 
         [Required(ErrorMessage = "Fecha inicio - Campo obligatorio ")]
-        [Display(Name ="Fecha inicio")]
+        [Display(Name = "Fecha inicio")]
         public System.DateTime fechaInicio { get; set; }
 
         [Required(ErrorMessage = "Plazo - Campo obligatorio")]
         [Range(1, int.MaxValue, ErrorMessage = "Debe ingresar un nro entero mayor a 0")]
         [RegularExpression("^\\d+$", ErrorMessage = "El plazo debe contener sólo números enteros.")]
         [Display(Name = "Plazo Entrega(En Dias)")]
-        public int plazo { get; set; }
 
+        public int plazo { get; set; }
         [Required(ErrorMessage = "Fecha fin  - Campo obligatorio")]
         [Display(Name = "Fecha fin")]
         public System.DateTime fechaFin { get; set; }
@@ -50,7 +50,7 @@ namespace BsoftWeb.Models
         [Display(Name = "Estado")]
         [StringLength(45)]
         public string estado { get; set; }
-        
+
         [Required(ErrorMessage = "Fecha de Resgistro - Campo obligatorio")]
         [Display(Name = "Fecha de registro")]
         public System.DateTime fechaRegistro { get; set; }
@@ -60,7 +60,7 @@ namespace BsoftWeb.Models
 
         [Display(Name = "Usuario")]
         public int idUsuario { get; set; }
-    
+
         public virtual TecnicoProveedor TecnicoProveedor { get; set; }
         public virtual Usuario Usuario { get; set; }
     }

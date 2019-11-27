@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BsoftDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="BsoftDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Compra">
           <Key>
             <PropertyRef Name="idCompra" />
@@ -25,7 +25,7 @@
           <Property Name="idCompra" Type="int" Nullable="false" />
           <Property Name="idEquipamiento" Type="int" Nullable="false" />
           <Property Name="cantidad" Type="int" Nullable="false" />
-          <Property Name="precioCpra" Type="real" Nullable="false" />
+          <Property Name="precioCpra" Type="float" Nullable="false" />
           <Property Name="plazoEntrega" Type="int" Nullable="false" />
           <Property Name="fechaEntrega" Type="datetime" Nullable="false" />
           <Property Name="calidad" Type="int" Nullable="false" />
@@ -37,6 +37,7 @@
           </Key>
           <Property Name="idEquipamiento" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="descripcion" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="precioCpraActual" Type="float" Nullable="false" />
           <Property Name="stock" Type="int" Nullable="false" />
           <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
@@ -297,8 +298,7 @@
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BsoftDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -343,6 +343,7 @@
           <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="DetalleCompra" Relationship="Self.FK_DetalleCompra_Equipamiento" FromRole="Equipamiento" ToRole="DetalleCompra" />
+          <Property Name="precioCpraActual" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="Localidad">
           <Key>
@@ -433,7 +434,7 @@
           </Key>
           <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombreUsuario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="contraseña" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idPerfilUsuario" Type="Int32" Nullable="false" />
@@ -651,6 +652,7 @@
           <EntitySetMapping Name="Equipamiento">
             <EntityTypeMapping TypeName="BsoftDBModel.Equipamiento">
               <MappingFragment StoreEntitySet="Equipamiento">
+                <ScalarProperty Name="precioCpraActual" ColumnName="precioCpraActual" />
                 <ScalarProperty Name="idEquipamiento" ColumnName="idEquipamiento" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="stock" ColumnName="stock" />

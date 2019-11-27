@@ -36,7 +36,7 @@ namespace BsoftWeb.Models
         [Required(ErrorMessage = "Fecha de registro - Campo obligatorio")]
         [Display(Name = "Fecha de Registro")]
         public System.DateTime fechaRegistro { get; set; }
-    
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario> Usuario { get; set; }
     }

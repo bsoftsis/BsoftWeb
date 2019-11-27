@@ -15,6 +15,69 @@ namespace BsoftWeb.Controllers
     {
         private BsoftDBEntities db = new BsoftDBEntities();
 
+        // GET: Login usuario
+        public ActionResult Login()
+        {
+            Session.Clear();
+            var usuario = new Usuario();
+
+            return View(usuario);
+        }
+
+        // POST: Login
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(Usuario usuario)
+        {
+            try
+            {
+                
+                var usr = db.Usuario.Where(u => u.nombreUsuario == usuario.nombreUsuario)
+                            .Include(u => u.PerfilUsuario);
+
+                if (usr != null && usr.ToList().Count > 0)
+                {
+                    if (usr.First().contraseña == usuario.contraseña)
+
+                    {
+                        //logueado
+                        //Session.Add("usuario", usr);+
+                        Session["usuario"] = usr.First().nombreUsuario;
+                        Session["perfil"] = usr.First().PerfilUsuario.descripcion;
+
+                        return RedirectToAction("Index", "Proveedor");
+                    }
+                    else
+                    {
+                        ViewBag.Mensaje="la contraseña es incorrecta";
+                        return RedirectToAction("Login", "Usuario");
+                    }
+                }
+                else
+                {
+                    ViewBag.Mensaje= "El usuario no Existe";
+                    return RedirectToAction("Login", "Usuario");
+                }
+            }
+            catch(Exception e)
+            {
+                return View("Error",e);
+            }
+                     
+        }
+
+
+        // POST: Salir
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Salir()
+        {
+            Session.Clear();
+            return RedirectToAction("Login", "Usuario");
+        }
+
+
+
         // GET: Usuario
         public ActionResult Index()
         {
@@ -55,6 +118,8 @@ namespace BsoftWeb.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "idUsuario,nombreUsuario,contraseña,email,estado,idPerfilUsuario,fechaRegistro")] Usuario usuario)
         {
+
+
             if (ModelState.IsValid)
             {
                 db.Usuario.Add(usuario);
@@ -69,7 +134,7 @@ namespace BsoftWeb.Controllers
         // GET: Usuario/Edit/5
         public ActionResult Edit(int? id)
         {
-            EncriptadorAES128 desEnc = new EncriptadorAES128();
+            //EncriptadorAES128 desEnc = new EncriptadorAES128();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -82,7 +147,7 @@ namespace BsoftWeb.Controllers
             //para el combo de niveles de estados
             ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoGeneral>();
 
-            usuario.contraseña = desEnc.Desencriptar(usuario.contraseña);
+            //usuario.contraseña = desEnc.Desencriptar(usuario.contraseña);
 
             ViewBag.idPerfilUsuario = new SelectList(db.PerfilUsuario, "idPerfilUsuario", "descripcion", usuario.idPerfilUsuario);
             return View(usuario);
@@ -97,8 +162,8 @@ namespace BsoftWeb.Controllers
         {
             if (ModelState.IsValid)
             {
-                EncriptadorAES128 enc = new EncriptadorAES128();
-                usuario.contraseña = enc.Encriptar(usuario.contraseña);
+                //EncriptadorAES128 enc = new EncriptadorAES128();
+                //usuario.contraseña = enc.Encriptar(usuario.contraseña);
                 db.Entry(usuario).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

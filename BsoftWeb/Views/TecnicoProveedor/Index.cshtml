@@ -1,14 +1,13 @@
 ﻿@model IEnumerable<BsoftWeb.Models.TecnicoProveedor>
 
 @{
-    ViewBag.Title = "Tecnicos del Proveedor";
+    ViewBag.Title = "Lista de Tecnicos";
 }
 
-<h2>Listado de Tecnicos</h2>
+<h2>Lista de Tecnicos</h2>
 
-<p>
-    @Html.ActionLink("Nuevo Tecnico", "Create")
-</p>
+@Html.Partial("_BtnIndexNuevoPartial")
+
 <table class="table">
     <tr>
         <th>
@@ -44,46 +43,51 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.apellido)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cuil)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.especialidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nivelEspecialidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaIngreso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaEgreso)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaRegistro)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Proveedor.razonSocial)
-        </td>
-        <td>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Editar", "Edit", new { id = item.idTecnicoProveedor }) |
-                @Html.ActionLink("Detaille", "Details", new { id = item.idTecnicoProveedor }) |
-                @Html.ActionLink("Borrar", "Delete", new { id = item.idTecnicoProveedor })
-            </button>
-</td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.apellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cuil)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.especialidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nivelEspecialidad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.estado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaEgreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fechaRegistro)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Proveedor.razonSocial)
+            </td>
+            <td>
+                <button type="button" class="btn-sm">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idTecnicoProveedor })
+                </button>
+                <button type="button" class="btn-sm">
+                    @Html.ActionLink("Detalle", "Details", new { id = item.idTecnicoProveedor })
+                </button>
+                <button type="button" class="btn-sm">
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.idTecnicoProveedor })
+                </button>
+            </td>
+        </tr>
+    }
 
 </table>

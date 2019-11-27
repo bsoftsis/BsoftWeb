@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - BsoftSIS</title>
@@ -12,18 +12,20 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
+        <div class="container">
 
             <div class="navbar-header">
                 <a href="/Home/">
-                    <img class="img-responsive" width=50 height=50 src="~/Content/Images/Logo.jpg" alt="Logo Bsoft" />
-                </a> 
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar">
-                        </span>
-                    </button>
+                    @*img-fluid img-circle*@@*"img-responsive"*@ 
+                    <img class="img-fluid img-circle" width=50 height=50 src="~/Content/Images/Logo.jpg" alt="Logo Bsoft" />
+                </a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar">
+                    </span>
+                </button>
+
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -32,26 +34,73 @@
                     <li>@Html.ActionLink("Contacto", "Contact", "Home")</li>
 
                     @*Si el usuario esta logueado se vera esta parte del menu
-                    segun el prefil del usuario que usa el sistema*@
-                    <li>@Html.ActionLink("Proveedores","index", "Proveedor")</li>
-                    <li>@Html.ActionLink("Compras", "index", "Compra")</li>
-                    <li>@Html.ActionLink("Servicios", "index", "Servicio")</li>
-                    <li>@Html.ActionLink("Tecnicos", "index", "TecnicoProveedor")</li>
-                    <li>@Html.ActionLink("Equipamientos", "index", "Equipamiento")</li>
-                    <li>@Html.ActionLink("Usuarios", "index", "Usuario")</li>
-                    <li>@Html.ActionLink("PerfilUsuarios", "index", "PerfilUsuario")</li>
+                        segun el prefil del usuario que usa el sistema*@
+                    @if (Session == null || Session.Count <= 0)
+                    {
+                        <li>@Html.ActionLink("Acceso sistema", "Login", "Usuario")</li>
+                    }
+
+                    @if (Session.Count > 0 && Session["usuario"].ToString().Length > 0)
+                    {
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="~/Proveedor/index/">
+                                Proveedores <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li role="menuitem">@Html.ActionLink("Proveedores", "index", "Proveedor")</li>
+                                <li role="menuitem">@Html.ActionLink("Tecnicos", "index", "TecnicoProveedor")</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Compras", "index", "Compra")</li>
+                        <li>@Html.ActionLink("Servicios", "index", "Servicio")</li>
+
+                        <li>@Html.ActionLink("Equipamientos", "index", "Equipamiento")</li>
+                        <li class="dropdown">
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="~/Usuario/index/">
+                                Usuarios <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li role="menuitem">
+                                    @Html.ActionLink("Usuarios", "index", "Usuario")
+                                </li>
+                                <li role="menuitem">
+                                    @Html.ActionLink("PerfilUsuarios", "index", "PerfilUsuario")
+                                </li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Salir", "Login", "Usuario")</li>
+
+
+                    }
                 </ul>
             </div>
         </div>
     </div>
     <div class="container body-content">
+
+        @if (Session.Count > 0 && Session["usuario"].ToString().Length > 0)
+        {
+            <div class="text-success">
+                <label class="navbar-nav">
+                    <span class="label label-primary">Usuario: </span>
+                    @Session["usuario"]
+                </label>
+
+                <label class="navbar-nav">
+                    <span class="label label-primary"> Perfil: </span>
+                    @Session["perfil"]
+                </label>
+            </div>
+        }
+
         <div class="well">
             @RenderBody()
         </div>
         <hr />
         <footer class="panel-footer">
             <p class="text-success">&copy; @DateTime.Now.Year - Bisoft SAS - @Html.Partial("_RedesPartial") </p>
-         
+
         </footer>
     </div>
 

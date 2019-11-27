@@ -32,7 +32,7 @@ namespace BsoftWeb.Models
 
         [Required(ErrorMessage = "Precio compra - Campo obligatorio")]
         [Display(Name = "Precio compra")]
-        [Range(1, float.MaxValue, ErrorMessage = "Debe ingresar un valor mayor a 0")]     
+        [Range(1, float.MaxValue, ErrorMessage = "Debe ingresar un valor mayor a 0")]
         [RegularExpression(@"^\$?\d+(\.(\d{2}))?$", ErrorMessage = "El precio debe contener sólo números decimales.")]
         public float precioCpra { get; set; }
 
@@ -50,12 +50,13 @@ namespace BsoftWeb.Models
         [Display(Name = "Calidad servicios")]
         public int calidad { get; set; }
         
+
         [Display(Name = "Observaciones")]
+        [DataType(DataType.MultilineText)]
         [StringLength(100)]
         public string observaciones { get; set; }
-    
-        public virtual Compra Compra { get; set; }
 
+        public virtual Compra Compra { get; set; }
         public virtual Equipamiento Equipamiento { get; set; }
     }
 }
