@@ -13,74 +13,74 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.razonSocial)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.cuit)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.domicilio)
+            @Html.DisplayNameFor(model => model.razonSocial)
         </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.domicilio)
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.telefono)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.celular)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.email)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.estado)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.fechaRegistro)
-        </th>
-        <th>
+        </th>*@
+        @*<th>
             @Html.DisplayNameFor(model => model.Localidad.nombreLocalidad)
-        </th>
+        </th>*@
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.razonSocial)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.cuit)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.domicilio)
+            @Html.DisplayFor(modelItem => item.razonSocial)
         </td>
-        <td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.domicilio)
+        </td>*@
+       <td>
             @Html.DisplayFor(modelItem => item.telefono)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.celular)
-        </td>
+        @*<td>
+             @Html.DisplayFor(modelItem => item.celular)
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.email)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.estado)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.fechaRegistro)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.Localidad.nombreLocalidad)
-        </td>
+        </td>*@
         <td>
 
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Editar", "Edit", new { id = item.idProveedor })
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Editar", "Edit", new { id = item.idProveedor }, new { Style = "color:White; text-decoration:none;" })
             </button>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Detalle", "Details", new { id = item.idProveedor })
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Detalle", "Details", new { id = item.idProveedor }, new { Style = "color:White; text-decoration:none;" })
             </button>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Borrar", "Delete", new { id = item.idProveedor })
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Borrar", "Delete", new { id = item.idProveedor }, new { Style = "color:White; text-decoration:none;" })
             </button>
           
         </td>

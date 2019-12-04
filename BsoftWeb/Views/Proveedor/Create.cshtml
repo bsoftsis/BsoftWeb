@@ -1,16 +1,16 @@
 ﻿@model BsoftWeb.Models.Proveedor
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Nuevo Proveedor";
 }
 
-<h2>Create</h2>
+<h2>Nuevo</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Proveedor</h4>
         <hr />
@@ -27,8 +27,10 @@
             @Html.LabelFor(model => model.cuit, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.cuit, new { htmlAttributes = new { @class = "form-control" } })
+                <span> Ingresar sin guiones</span>
                 @Html.ValidationMessageFor(model => model.cuit, "", new { @class = "text-danger" })
             </div>
+             
         </div>
 
         <div class="form-group">
@@ -63,41 +65,56 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Localidad.idProvincia, "Provincia", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+                @Html.DropDownList("Provincia", (IEnumerable<SelectListItem>)ViewBag.Provincia, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Localidad.idProvincia, "", new { @class = "text-danger" })
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.fechaRegistro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.fechaRegistro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.fechaRegistro, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.idLocalidad, "idLocalidad", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("idLocalidad", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("idLocalidad", (IEnumerable<SelectListItem>)ViewBag.idLocalidad, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idLocalidad, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Localidad.codigoPostal, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Localidad.codigoPostal, new { htmlAttributes = new { @class = "form-control" } })
             </div>
-        </div>
-    </div>
-}
+        </div>*@
+            <div class="form-group">
+                @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("estado", (IEnumerable<SelectListItem>)ViewBag.ListaEstado, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+                </div>
+            </div>
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.fechaRegistro, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.fechaRegistro, new
+               {
+                   htmlAttributes = new
+                   {
+                       disabled = "disabled",
+                       @readonly = "readonly",
+                       Value = @DateTime.Now.ToString("dd/MM/yyyy"),
+                       @class = "form-control"
+                   }
+               })
+                </div>
+                   @Html.HiddenFor(model => model.fechaRegistro, new { Value = @DateTime.Now.ToString("dd/MM/yyyy") })
+               
+            </div>
+            @Html.Partial("_BtnFrmCreatePartial")
+        </div>
+
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="BsoftDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="BSoftDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Compra">
           <Key>
             <PropertyRef Name="idCompra" />
@@ -91,7 +91,7 @@
           <Property Name="fechaInicio" Type="datetime" Nullable="false" />
           <Property Name="plazo" Type="int" Nullable="false" />
           <Property Name="fechaFin" Type="datetime" Nullable="false" />
-          <Property Name="descripcion" Type="datetime" Nullable="false" />
+          <Property Name="descripcion" Type="varchar" MaxLength="100" Nullable="false" />
           <Property Name="calidad" Type="int" Nullable="false" />
           <Property Name="estado" Type="varchar" MaxLength="45" Nullable="false" />
           <Property Name="fechaRegistro" Type="datetime" Nullable="false" />
@@ -246,7 +246,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BsoftDBModelStoreContainer">
+        <EntityContainer Name="BSoftDBModelStoreContainer">
           <EntitySet Name="Compra" EntityType="Self.Compra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DetalleCompra" EntityType="Self.DetalleCompra" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Equipamiento" EntityType="Self.Equipamiento" Schema="dbo" store:Type="Tables" />
@@ -298,10 +298,11 @@
             <End Role="Usuario" EntitySet="Usuario" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="BsoftDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="BSoftDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Compra">
           <Key>
             <PropertyRef Name="idCompra" />
@@ -325,7 +326,7 @@
           <Property Name="idCompra" Type="Int32" Nullable="false" />
           <Property Name="idEquipamiento" Type="Int32" Nullable="false" />
           <Property Name="cantidad" Type="Int32" Nullable="false" />
-          <Property Name="precioCpra" Type="Single" Nullable="false" />
+          <Property Name="precioCpra" Type="Double" Nullable="false" />
           <Property Name="plazoEntrega" Type="Int32" Nullable="false" />
           <Property Name="fechaEntrega" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="calidad" Type="Int32" Nullable="false" />
@@ -339,11 +340,11 @@
           </Key>
           <Property Name="idEquipamiento" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="descripcion" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="precioCpraActual" Type="Double" Nullable="false" />
           <Property Name="stock" Type="Int32" Nullable="false" />
           <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
           <NavigationProperty Name="DetalleCompra" Relationship="Self.FK_DetalleCompra_Equipamiento" FromRole="Equipamiento" ToRole="DetalleCompra" />
-          <Property Name="precioCpraActual" Type="Double" Nullable="false" />
         </EntityType>
         <EntityType Name="Localidad">
           <Key>
@@ -401,7 +402,7 @@
           <Property Name="fechaInicio" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="plazo" Type="Int32" Nullable="false" />
           <Property Name="fechaFin" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="descripcion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="calidad" Type="Int32" Nullable="false" />
           <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="fechaRegistro" Type="DateTime" Nullable="false" Precision="3" />
@@ -434,7 +435,7 @@
           </Key>
           <Property Name="idUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="nombreUsuario" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
-          <Property Name="contraseña" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contraseña" Type="String" MaxLength="8" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="estado" Type="String" MaxLength="45" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="idPerfilUsuario" Type="Int32" Nullable="false" />
@@ -563,7 +564,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="BsoftDBEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="BsoftDBModel" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Compra" EntityType="Self.Compra" />
           <EntitySet Name="DetalleCompra" EntityType="Self.DetalleCompra" />
           <EntitySet Name="Equipamiento" EntityType="Self.Equipamiento" />
@@ -620,9 +621,9 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="BsoftDBModelStoreContainer" CdmEntityContainer="BsoftDBEntities">
+        <EntityContainerMapping StorageEntityContainer="BSoftDBModelStoreContainer" CdmEntityContainer="BsoftDBModel">
           <EntitySetMapping Name="Compra">
-            <EntityTypeMapping TypeName="BsoftDBModel.Compra">
+            <EntityTypeMapping TypeName="BSoftDBModel.Compra">
               <MappingFragment StoreEntitySet="Compra">
                 <ScalarProperty Name="idCompra" ColumnName="idCompra" />
                 <ScalarProperty Name="fechaCompra" ColumnName="fechaCompra" />
@@ -635,7 +636,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DetalleCompra">
-            <EntityTypeMapping TypeName="BsoftDBModel.DetalleCompra">
+            <EntityTypeMapping TypeName="BSoftDBModel.DetalleCompra">
               <MappingFragment StoreEntitySet="DetalleCompra">
                 <ScalarProperty Name="idDetalleCompra" ColumnName="idDetalleCompra" />
                 <ScalarProperty Name="idCompra" ColumnName="idCompra" />
@@ -650,11 +651,11 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Equipamiento">
-            <EntityTypeMapping TypeName="BsoftDBModel.Equipamiento">
+            <EntityTypeMapping TypeName="BSoftDBModel.Equipamiento">
               <MappingFragment StoreEntitySet="Equipamiento">
-                <ScalarProperty Name="precioCpraActual" ColumnName="precioCpraActual" />
                 <ScalarProperty Name="idEquipamiento" ColumnName="idEquipamiento" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
+                <ScalarProperty Name="precioCpraActual" ColumnName="precioCpraActual" />
                 <ScalarProperty Name="stock" ColumnName="stock" />
                 <ScalarProperty Name="estado" ColumnName="estado" />
                 <ScalarProperty Name="fechaRegistro" ColumnName="fechaRegistro" />
@@ -662,7 +663,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Localidad">
-            <EntityTypeMapping TypeName="BsoftDBModel.Localidad">
+            <EntityTypeMapping TypeName="BSoftDBModel.Localidad">
               <MappingFragment StoreEntitySet="Localidad">
                 <ScalarProperty Name="idLocalidad" ColumnName="idLocalidad" />
                 <ScalarProperty Name="nombreLocalidad" ColumnName="nombreLocalidad" />
@@ -672,7 +673,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="PerfilUsuario">
-            <EntityTypeMapping TypeName="BsoftDBModel.PerfilUsuario">
+            <EntityTypeMapping TypeName="BSoftDBModel.PerfilUsuario">
               <MappingFragment StoreEntitySet="PerfilUsuario">
                 <ScalarProperty Name="idPerfilUsuario" ColumnName="idPerfilUsuario" />
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
@@ -682,7 +683,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Proveedor">
-            <EntityTypeMapping TypeName="BsoftDBModel.Proveedor">
+            <EntityTypeMapping TypeName="BSoftDBModel.Proveedor">
               <MappingFragment StoreEntitySet="Proveedor">
                 <ScalarProperty Name="idProveedor" ColumnName="idProveedor" />
                 <ScalarProperty Name="razonSocial" ColumnName="razonSocial" />
@@ -698,7 +699,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Provincia">
-            <EntityTypeMapping TypeName="BsoftDBModel.Provincia">
+            <EntityTypeMapping TypeName="BSoftDBModel.Provincia">
               <MappingFragment StoreEntitySet="Provincia">
                 <ScalarProperty Name="idProvincia" ColumnName="idProvincia" />
                 <ScalarProperty Name="nombreProvincia" ColumnName="nombreProvincia" />
@@ -706,7 +707,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Servicio">
-            <EntityTypeMapping TypeName="BsoftDBModel.Servicio">
+            <EntityTypeMapping TypeName="BSoftDBModel.Servicio">
               <MappingFragment StoreEntitySet="Servicio">
                 <ScalarProperty Name="idServicio" ColumnName="idServicio" />
                 <ScalarProperty Name="nroOrden" ColumnName="nroOrden" />
@@ -723,7 +724,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TecnicoProveedor">
-            <EntityTypeMapping TypeName="BsoftDBModel.TecnicoProveedor">
+            <EntityTypeMapping TypeName="BSoftDBModel.TecnicoProveedor">
               <MappingFragment StoreEntitySet="TecnicoProveedor">
                 <ScalarProperty Name="idTecnicoProveedor" ColumnName="idTecnicoProveedor" />
                 <ScalarProperty Name="nombre" ColumnName="nombre" />
@@ -740,7 +741,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Usuario">
-            <EntityTypeMapping TypeName="BsoftDBModel.Usuario">
+            <EntityTypeMapping TypeName="BSoftDBModel.Usuario">
               <MappingFragment StoreEntitySet="Usuario">
                 <ScalarProperty Name="idUsuario" ColumnName="idUsuario" />
                 <ScalarProperty Name="nombreUsuario" ColumnName="nombreUsuario" />

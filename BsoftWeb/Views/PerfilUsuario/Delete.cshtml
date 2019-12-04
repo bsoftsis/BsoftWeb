@@ -36,7 +36,9 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @Html.Partial("_BtnDeletePartial")
+
+    @*@using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
@@ -45,5 +47,5 @@
             </button>
             <input type="submit" value="Borrar" class="btn btn-primary btn-sm" /> 
         </div>
-    }
+    }*@
 </div>

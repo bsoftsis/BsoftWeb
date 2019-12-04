@@ -1,32 +1,26 @@
 ﻿@model BsoftWeb.Models.DetalleCompra
 
-@{
-    ViewBag.Title = "Create";
-}
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
-        <h4>DetalleCompra</h4>
+        <h4>Detalle de Compra</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.idCompra, "idCompra", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idCompra, "Compra", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("idCompra", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("Compra", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idCompra, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idEquipamiento, "idEquipamiento", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idEquipamiento, "Equipamiento", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("idEquipamiento", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("Equipamiento", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idEquipamiento, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -58,7 +52,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fechaEntrega, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.fechaEntrega, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.fechaEntrega, new { htmlAttributes = new { @class = "form-control", @type = "date" } })
                 @Html.ValidationMessageFor(model => model.fechaEntrega, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -66,7 +60,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.calidad, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.calidad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("calidad", (List<SelectListItem>)ViewBag.ListaCalidad, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.calidad, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -78,18 +72,9 @@
                 @Html.ValidationMessageFor(model => model.observaciones, "", new { @class = "text-danger" })
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+        @Html.Partial("_BtnFrmCreatePartial")
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

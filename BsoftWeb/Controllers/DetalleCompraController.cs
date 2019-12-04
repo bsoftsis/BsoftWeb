@@ -12,7 +12,7 @@ namespace BsoftWeb.Controllers
 {
     public class DetalleCompraController : Controller
     {
-        private BsoftDBEntities db = new BsoftDBEntities();
+        private BsoftDBModel db = new BsoftDBModel();
 
         // GET: DetalleCompra
         public ActionResult Index()

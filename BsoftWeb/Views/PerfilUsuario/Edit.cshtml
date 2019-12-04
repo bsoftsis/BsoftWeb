@@ -49,14 +49,9 @@
                 @Html.HiddenFor(model => model.fechaRegistro, new { Value = @DateTime.Now.ToString("dd/MM/yyyy") })
             </div>
         </div>
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <button type="button" class="btn-sm">
-                    @Html.ActionLink("Cancelar", "Index", null, new { @class = "" })
-                </button>
-                <input type="submit" value="Guardar" class="btn btn-primary btn-sm" />
-            </div>
-        </div>
+        
+        @Html.Partial("_BtnFrmCreatePartial")
+   
     </div>
 }
 

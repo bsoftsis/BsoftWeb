@@ -11,8 +11,7 @@ namespace BsoftWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class PerfilUsuario
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,23 +19,12 @@ namespace BsoftWeb.Models
         {
             this.Usuario = new HashSet<Usuario>();
         }
-
-        [Display(Name = "Perfil Usuario")]
+    
         public int idPerfilUsuario { get; set; }
-
-        [Required(ErrorMessage = "Descripcion - Campo obligatorio ")]
-        [StringLength(45)]
-        [Display(Name = "Descripcion")]
         public string descripcion { get; set; }
-
-        [Required(ErrorMessage = "Estado - Campo obligatorio")]
-        [Display(Name = "Estado")]
         public string estado { get; set; }
-
-        [Required(ErrorMessage = "Fecha de registro - Campo obligatorio")]
-        [Display(Name = "Fecha de Registro")]
         public System.DateTime fechaRegistro { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Usuario> Usuario { get; set; }
     }

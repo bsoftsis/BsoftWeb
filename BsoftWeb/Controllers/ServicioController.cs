@@ -7,14 +7,15 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BsoftWeb.Models;
+using BsoftWeb.Servicios;
 
 namespace BsoftWeb.Controllers
 {
     public class ServicioController : Controller
     {
-        private BsoftDBEntities db = new BsoftDBEntities();
+        private BsoftDBModel db = new BsoftDBModel();
 
-        // GET: Servicios
+        // GET: Servicio
         public ActionResult Index()
         {
             var servicio = db.Servicio.Include(s => s.TecnicoProveedor).Include(s => s.Usuario);
@@ -39,8 +40,12 @@ namespace BsoftWeb.Controllers
         // GET: Servicios/Create
         public ActionResult Create()
         {
-            ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre");
-            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario");
+            ViewBag.idTecnicoProveedor = (from tp in db.TecnicoProveedor
+                                   select new SelectListItem { Value = tp.idTecnicoProveedor.ToString(), Text = tp.apellido+", "+tp.nombre });
+            //para el combo de niveles de estados
+            ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoServicio>();
+            //niveles de calidad
+            ViewBag.ListaCalidad = HTMLSelect.ToListSelectListItem<NivelCalidad>();
             return View();
         }
 
@@ -53,14 +58,18 @@ namespace BsoftWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                //pasa el estado de numero a cadena de caracteres
+                servicio.estado = Enum.GetName(typeof(EstadoServicio), Convert.ToInt32(servicio.estado));
+                servicio.fechaRegistro = DateTime.Now;
+                servicio.idUsuario = Int32.Parse(Session["idUsuario"].ToString());//usuario activo
+
                 db.Servicio.Add(servicio);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre", servicio.idTecnicoProveedor);
-            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario", servicio.idUsuario);
-            return View(servicio);
+        
+            return View();
         }
 
         // GET: Servicios/Edit/5

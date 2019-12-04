@@ -16,7 +16,7 @@ namespace BsoftWeb.Controllers
 {
     public class TecnicoProveedorController : Controller
     {
-        private BsoftDBEntities db = new BsoftDBEntities();
+        private BsoftDBModel db = new BsoftDBModel();
 
         // GET: TecnicoProveedor
         public ActionResult Index()

@@ -34,14 +34,14 @@
             @Html.DisplayFor(modelItem => item.Provincia.nombreProvincia)
         </td>
         <td>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Editar", "Edit", new { id = item.idLocalidad})
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Editar", "Edit", new { id = item.idLocalidad }, new { Style = "color:White; text-decoration:none;" })
             </button>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Detalle", "Details", new { id = item.idLocalidad })
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Detalle", "Details", new { id = item.idLocalidad }, new { Style = "color:White; text-decoration:none;" })
             </button>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Borrar", "Delete", new { id = item.idLocalidad })
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Borrar", "Delete", new { id = item.idLocalidad }, new { Style = "color:White; text-decoration:none;" })
             </button>
         </td>
     </tr>

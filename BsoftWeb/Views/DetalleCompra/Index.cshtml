@@ -39,10 +39,7 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.cantidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.precioCpra)
+            @Html.DisplayFor(modelItem => item.Equipamiento.descripcion)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.plazoEntrega)
@@ -57,20 +54,24 @@
             @Html.DisplayFor(modelItem => item.observaciones)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Compra.nroComprobante)
+            @Html.DisplayFor(modelItem => item.cantidad)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Equipamiento.descripcion)
+            @Html.DisplayFor(modelItem => item.precioCpra)
         </td>
         <td>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Editar", "Edit", new { id = item.idDetalleCompra })
+            @Html.DisplayFor(modelItem => item.SubTotal)
+        </td>
+
+        <td>
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Editar", "Edit", new { id = item.idDetalleCompra }, new { Style = "color:White; text-decoration:none;" })
             </button>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Detalle", "Details", new { id = item.idDetalleCompra })
+            <button type="button" class=btn btn-primary btn-sm">
+                @Html.ActionLink("Detalle", "Details", new { id = item.idDetalleCompra }, new { Style = "color:White; text-decoration:none;" })
             </button>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Borrar", "Delete", new { id = item.idDetalleCompra })
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Borrar", "Delete", new { id = item.idDetalleCompra }, new { Style = "color:White; text-decoration:none;" })
             </button>
         </td>
     </tr>

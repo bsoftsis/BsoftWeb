@@ -13,10 +13,10 @@ namespace BsoftWeb.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class BsoftDBEntities : DbContext
+    public partial class BsoftDBModel : DbContext
     {
-        public BsoftDBEntities()
-            : base("name=BsoftDBEntities")
+        public BsoftDBModel()
+            : base("name=BsoftDBModel")
         {
         }
     

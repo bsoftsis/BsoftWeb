@@ -54,14 +54,14 @@
                 @Html.DisplayFor(modelItem => item.PerfilUsuario.descripcion)
             </td>
             <td>
-                <button type="button" class="btn-sm">
-                    @Html.ActionLink("Editar", "Edit", new { id = item.idUsuario })
+                <button type="button" class="btn btn-primary btn-sm">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idUsuario }, new { Style = "color:White; text-decoration:none;" })
                 </button>
-                <button type="button" class="btn-sm">
-                    @Html.ActionLink("Detalle", "Details", new { id = item.idUsuario })
+                <button type="button" class=" btn-primary btn-sm">
+                    @Html.ActionLink("Detalle", "Details", new { id = item.idUsuario }, new { Style = "color:White; text-decoration:none;" })
                 </button>
-                <button type="button" class="btn-sm">
-                    @Html.ActionLink("Borrar", "Delete", new { id = item.idUsuario })
+                <button type="button" class=" btn-primary btn-sm">
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.idUsuario }, new { Style = "color:White; text-decoration:none;" })
                 </button>
         </tr>
     }

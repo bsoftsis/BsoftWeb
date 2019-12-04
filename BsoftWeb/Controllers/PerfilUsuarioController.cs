@@ -13,7 +13,7 @@ namespace BsoftWeb.Controllers
 {
     public class PerfilUsuarioController : Controller
     {
-        private BsoftDBEntities db = new BsoftDBEntities();
+        private BsoftDBModel db = new BsoftDBModel();
 
         // GET: PerfilUsuario
         public ActionResult Index()

@@ -12,7 +12,7 @@ namespace BsoftWeb.Controllers
 {
     public class LocalidadController : Controller
     {
-        private BsoftDBEntities db = new BsoftDBEntities();
+        private BsoftDBModel db = new BsoftDBModel();
 
         // GET: Localidad
         public ActionResult Index()

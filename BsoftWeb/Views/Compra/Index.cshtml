@@ -1,10 +1,10 @@
 ﻿@model IEnumerable<BsoftWeb.Models.Compra>
 
 @{
-    ViewBag.Title = "Listado Compra";
+    ViewBag.Title = "Listado de Compra";
 }
 
-<h2>Lista Compra</h2>
+<h2>Listado de Compras</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -12,22 +12,16 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.fechaCompra)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.nroComprobante)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.estado)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaRegistro)
+            @Html.DisplayNameFor(model => model.fechaCompra)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Proveedor.razonSocial)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Usuario.nombreUsuario)
+            @Html.DisplayNameFor(model => model.estado)
         </th>
         <th></th>
     </tr>
@@ -35,32 +29,27 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.fechaCompra)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.nroComprobante)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaRegistro)
+            @Html.DisplayFor(modelItem => item.fechaCompra)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Proveedor.razonSocial)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Usuario.nombreUsuario)
+            @Html.DisplayFor(modelItem => item.estado)
         </td>
+
         <td>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Editar", "Edit", new { id = item.idCompra })
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Editar", "Edit", new { id = item.idCompra }, new { Style = "color:White; text-decoration:none;"})
             </button>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Detalle", "Details", new { id = item.idCompra })
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Detalle", "Details", new { id = item.idCompra }, new { Style = "color:White; text-decoration:none;" })
             </button>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Borrar", "Delete", new { id = item.idCompra })
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Borrar", "Delete", new { id = item.idCompra }, new { Style = "color:White; text-decoration:none;" })
             </button>
         </td>
     </tr>

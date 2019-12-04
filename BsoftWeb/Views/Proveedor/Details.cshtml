@@ -85,6 +85,19 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.idProveedor }) |
-    @Html.ActionLink("Back to List", "Index")
+    <button type="button" class="btn btn-primary btn-sm">
+        @Html.ActionLink("Editar", "Edit", new { id = Model.idProveedor}, new { Style = "color:White; text-decoration:none;" })
+    </button>
+    <button type="button" class="btn btn-primary btn-sm">
+        @Html.ActionLink("Evaluacion", "Evaluacion", new { id = Model.idProveedor }, new { Style = "color:White; text-decoration:none;" })
+    </button>
+    <button type="button" class="btn btn-primary btn-sm">
+        @Html.ActionLink("Cancelar", "Index", null, new { Style = "color:White; text-decoration:none;" })
+    </button>
+
+
+
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.idProveedor }) |
+    @Html.ActionLink("Evaluacion", "Evaluacion", new { id = Model.idProveedor }) |
+    @Html.ActionLink("Back to List", "Index")*@
 </p>

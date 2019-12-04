@@ -12,7 +12,7 @@ namespace BsoftWeb.Controllers
 {
     public class ProvinciaController : Controller
     {
-        private BsoftDBEntities db = new BsoftDBEntities();
+        private BsoftDBModel db = new BsoftDBModel();
 
         // GET: Provincia
         public ActionResult Index()

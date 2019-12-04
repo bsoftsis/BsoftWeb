@@ -9,11 +9,9 @@
 
 namespace BsoftWeb.Models
 {
-    using CustomValidation;
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class TecnicoProveedor
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,54 +19,19 @@ namespace BsoftWeb.Models
         {
             this.Servicio = new HashSet<Servicio>();
         }
-
-        [Display(Name = "Tecnico")]
+    
         public int idTecnicoProveedor { get; set; }
-
-        [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(200)]
-        [Display(Name = "Nombre")]
         public string nombre { get; set; }
-
-        [Required(ErrorMessage = "Campo obligatorio")]
-        [StringLength(200)]
-        [Display(Name = "Apellido")]
         public string apellido { get; set; }
-
-        [CustomValidationCUIT(ErrorMessage = "El nro de CUIL no es valido")]
-        [Required(ErrorMessage = "Nro de CUIL - Campo obligatorio - Ingresar sin guiones")]
-        [StringLength(11)]
-        [Display(Name = "Nro de CUIL")]
         public string cuil { get; set; }
-
-        [Required(ErrorMessage = "Especialidad - Campo obligatorio")]
-        [StringLength(150)]
-        [Display(Name = "Especialidad")]
         public string especialidad { get; set; }
-
-        [Required(ErrorMessage = "Nivel Especialidad - Campo obligatorio")]
-        [Display(Name = "Nivel de Especialidad")]
         public int nivelEspecialidad { get; set; }
-
-        [Required(ErrorMessage = "Fecha Ingreso - Campo obligatorio")]
-        [Display(Name = "Fecha de Ingreso")]
-        public System.DateTime fechaIngreso { get; set; }
-
-        [Required(ErrorMessage = "Estado - Campo obligatorio")]
-        [StringLength(45)]
-        [Display(Name = "Estado")]
         public string estado { get; set; }
-
-        [Display(Name = "Fecha de Egreso")]
+        public System.DateTime fechaIngreso { get; set; }
         public Nullable<System.DateTime> fechaEgreso { get; set; }
-
-        [Required(ErrorMessage = "Campo obligatorio - Fecha de registro")]
-        [Display(Name = "Fecha de Registro")]
         public System.DateTime fechaRegistro { get; set; }
-
-        [Display(Name = "Proveedor")]
         public int idProveedor { get; set; }
-
+    
         public virtual Proveedor Proveedor { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Servicio> Servicio { get; set; }

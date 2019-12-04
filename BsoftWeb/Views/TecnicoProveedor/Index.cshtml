@@ -77,14 +77,14 @@
                 @Html.DisplayFor(modelItem => item.Proveedor.razonSocial)
             </td>
             <td>
-                <button type="button" class="btn-sm">
-                    @Html.ActionLink("Editar", "Edit", new { id = item.idTecnicoProveedor })
+                <button type="button" class="btn btn-primary btn-sm">
+                    @Html.ActionLink("Editar", "Edit", new { id = item.idTecnicoProveedor }, new { Style = "color:White; text-decoration:none;" })
                 </button>
-                <button type="button" class="btn-sm">
-                    @Html.ActionLink("Detalle", "Details", new { id = item.idTecnicoProveedor })
+                <button type="button" class="btn btn-primary btn-sm">
+                    @Html.ActionLink("Detalle", "Details", new { id = item.idTecnicoProveedor }, new { Style = "color:White; text-decoration:none;" })
                 </button>
-                <button type="button" class="btn-sm">
-                    @Html.ActionLink("Borrar", "Delete", new { id = item.idTecnicoProveedor })
+                <button type="button" class="btn btn-primary btn-sm">
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.idTecnicoProveedor }, new { Style = "color:White; text-decoration:none;" })
                 </button>
             </td>
         </tr>

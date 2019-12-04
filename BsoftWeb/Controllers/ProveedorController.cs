@@ -7,12 +7,39 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BsoftWeb.Models;
+using BsoftWeb.Servicios;
 
 namespace BsoftWeb.Controllers
 {
     public class ProveedorController : Controller
     {
-        private BsoftDBEntities db = new BsoftDBEntities();
+        private BsoftDBModel db = new BsoftDBModel();
+
+        // GET: Proveedor
+        public ActionResult Evaluacion(int? id)
+        {
+            
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            Proveedor proveedor = db.Proveedor.Find(id);
+            if (proveedor == null)
+            {
+                return HttpNotFound();
+
+
+            }
+
+            ViewBag.CalidadCompras = proveedor.CalidadCompras();
+            ViewBag.CalidadServicios = proveedor.CalidadServicios();
+
+
+            return View(proveedor);
+
+           
+        }
 
         // GET: Proveedor
         public ActionResult Index()
@@ -39,7 +66,18 @@ namespace BsoftWeb.Controllers
         // GET: Proveedor/Create
         public ActionResult Create()
         {
-            ViewBag.idLocalidad = new SelectList(db.Localidad, "idLocalidad", "nombreLocalidad");
+            ViewBag.idLocalidad= (from m in db.Localidad
+                       select new SelectListItem {  Value = m.idLocalidad.ToString(), Text = m.nombreLocalidad });
+
+            ViewBag.idProvincia = (from m in db.Provincia
+                        select new SelectListItem { Value = m.idProvincia.ToString(), Text = m.nombreProvincia });
+           
+
+            //para el combo de niveles de estados
+            ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoGeneral>();
+
+            //Proveedor proveedor = new Proveedor();
+
             return View();
         }
 
@@ -52,8 +90,20 @@ namespace BsoftWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                //pasa el estado de numero a cadena de caracteres
+                proveedor.estado = Enum.GetName(typeof(EstadoGeneral), Convert.ToInt32(proveedor.estado));
                 db.Proveedor.Add(proveedor);
-                db.SaveChanges();
+                //db.Localidad.Attach(proveedor.Localidad);
+                //db.Provincia.Attach(proveedor.Localidad.Provincia);
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (Exception e)
+                {
+
+                    Console.Write(e);
+                }
                 return RedirectToAction("Index");
             }
 
@@ -129,4 +179,8 @@ namespace BsoftWeb.Controllers
             base.Dispose(disposing);
         }
     }
+
+
+
+
 }

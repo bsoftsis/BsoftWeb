@@ -13,7 +13,7 @@ namespace BsoftWeb.Controllers
 {
     public class UsuarioController : Controller
     {
-        private BsoftDBEntities db = new BsoftDBEntities();
+        private BsoftDBModel db = new BsoftDBModel();
 
         // GET: Login usuario
         public ActionResult Login()
@@ -33,18 +33,19 @@ namespace BsoftWeb.Controllers
             {
                 
                 var usr = db.Usuario.Where(u => u.nombreUsuario == usuario.nombreUsuario)
-                            .Include(u => u.PerfilUsuario);
+                            .Include(u => u.PerfilUsuario).First();
 
-                if (usr != null && usr.ToList().Count > 0)
+                if (usr != null)
                 {
-                    if (usr.First().contraseña == usuario.contraseña)
+                    if (usr.contraseña == usuario.contraseña)
 
                     {
+                       
                         //logueado
                         //Session.Add("usuario", usr);+
-                        Session["usuario"] = usr.First().nombreUsuario;
-                        Session["perfil"] = usr.First().PerfilUsuario.descripcion;
-
+                        Session["usuario"] = usr.nombreUsuario;
+                        Session["perfil"] = usr.PerfilUsuario.descripcion;
+                        Session["idUsuario"] = usr.idUsuario;
                         return RedirectToAction("Index", "Proveedor");
                     }
                     else

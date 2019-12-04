@@ -11,8 +11,7 @@ namespace BsoftWeb.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-
+    
     public partial class Provincia
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -20,16 +19,10 @@ namespace BsoftWeb.Models
         {
             this.Localidad = new HashSet<Localidad>();
         }
-
-        [Display(Name = "Provincia")]
+    
         public int idProvincia { get; set; }
-
-
-        [Required(ErrorMessage = "Nombre Provincia - Campo obligatorio")]
-        [Display(Name = "Nombre Provincia")]
-        [StringLength(45)]
         public string nombreProvincia { get; set; }
-
+    
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Localidad> Localidad { get; set; }
     }

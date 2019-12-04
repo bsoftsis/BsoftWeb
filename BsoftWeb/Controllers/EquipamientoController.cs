@@ -12,7 +12,7 @@ namespace BsoftWeb.Controllers
 {
     public class EquipamientoController : Controller
     {
-        private BsoftDBEntities db = new BsoftDBEntities();
+        private BsoftDBModel db = new BsoftDBModel();
 
         // GET: Equipamiento
         public ActionResult Index()

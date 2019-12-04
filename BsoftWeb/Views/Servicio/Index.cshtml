@@ -24,23 +24,27 @@
         <th>
             @Html.DisplayNameFor(model => model.fechaFin)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.descripcion)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.calidad)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estado)
-        </th>
-        <th>
+        </th>*@
+        
+        @*<th>
             @Html.DisplayNameFor(model => model.fechaRegistro)
+        </th>*@
+        <th>
+            @Html.DisplayNameFor(model => model.TecnicoProveedor.apellido)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.TecnicoProveedor.nombre)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Usuario.nombreUsuario)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
         </th>
         <th></th>
     </tr>
@@ -59,17 +63,18 @@
         <td>
             @Html.DisplayFor(modelItem => item.fechaFin)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.descripcion)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.calidad)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
+        </td>*@
+       
+        @*<td>
             @Html.DisplayFor(modelItem => item.fechaRegistro)
+        </td>*@
+        <td>
+            @Html.DisplayFor(modelItem => item.TecnicoProveedor.apellido)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.TecnicoProveedor.nombre)
@@ -78,14 +83,17 @@
             @Html.DisplayFor(modelItem => item.Usuario.nombreUsuario)
         </td>
         <td>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Editar", "Edit", new { id = item.idServicio })
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            <button type="button" class="btn btn-primary btn-sm" >
+                @Html.ActionLink("Editar", "Edit", new { id = item.idServicio}, new { Style = "color:White; text-decoration:none;" })
             </button>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Detalle", "Details", new { id = item.idServicio })
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Detalle", "Details", new { id = item.idServicio }, new { Style = "color:White; text-decoration:none;" })
             </button>
-            <button type="button" class="btn-sm">
-                @Html.ActionLink("Borrar", "Delete", new { id = item.idServicio})
+            <button type="button" class="btn btn-primary btn-sm">
+                @Html.ActionLink("Borrar", "Delete", new { id = item.idServicio }, new { Style = "color:White; text-decoration:none;" })
             </button>
          
         </td>

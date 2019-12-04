@@ -1,16 +1,16 @@
 ﻿@model BsoftWeb.Models.Equipamiento
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Nuevo Equipamiento";
 }
 
-<h2>Create</h2>
+<h2>Nuevo</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Equipamiento</h4>
         <hr />
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownList("estado", (IEnumerable<SelectListItem>)ViewBag.ListaEstado, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,22 +42,22 @@
         <div class="form-group">
             @Html.LabelFor(model => model.fechaRegistro, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.fechaRegistro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.fechaRegistro, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.fechaRegistro, new
+           {
+               htmlAttributes = new
+               {
+                   disabled = "disabled",
+                   @readonly = "readonly",
+                   Value = @DateTime.Now.ToString("dd/MM/yyyy"),
+                   @class = "form-control"
+               }
+           })
+                @Html.HiddenFor(model => model.fechaRegistro, new { Value = @DateTime.Now.ToString("dd/MM/yyyy") })
             </div>
         </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
+        @Html.Partial("_BtnFrmCreatePartial")
     </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
