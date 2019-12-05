@@ -39,8 +39,8 @@ namespace BsoftWeb.Controllers
         // GET: Compra/Create
         public ActionResult Create()
         {
-            ViewBag.idProveedor = new SelectList(db.Proveedor, "idProveedor", "razonSocial");
-            ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario");
+            ViewBag.Proveedor = new SelectList(db.Proveedor, "idProveedor", "razonSocial");
+           // ViewBag.Usuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario");
             return View();
         }
 
@@ -53,6 +53,9 @@ namespace BsoftWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+
+
+
                 db.Compra.Add(compra);
                 db.SaveChanges();
                 return RedirectToAction("Index");

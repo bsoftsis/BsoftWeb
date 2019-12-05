@@ -161,9 +161,9 @@ namespace BsoftWeb.Models
 
         [Display(Name = "Usuario")]
         public virtual int idUsuario { get; set; }
-
-
     }
+    
+
 
     public class ProvinciaMetaData
     {
@@ -229,6 +229,7 @@ namespace BsoftWeb.Models
         [Required(ErrorMessage = "Campo obligatorio - Fecha de registro")]
         [Display(Name = "Fecha de Registro")]
         [DataType(DataType.DateTime)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public virtual System.DateTime fechaRegistro { get; set; }
 
         [Display(Name = "Localidad")]

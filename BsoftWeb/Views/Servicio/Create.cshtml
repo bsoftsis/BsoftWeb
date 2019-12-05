@@ -66,7 +66,7 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.idTecnicoProveedor, "idTecnicoProveedor", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idTecnicoProveedor, "Tecnico", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("idTecnicoProveedor", (IEnumerable<SelectListItem>)ViewBag.idTecnicoProveedor, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idTecnicoProveedor, "", new { @class = "text-danger" })
@@ -75,8 +75,6 @@
                     @Html.ValidationMessageFor(model => model.idTecnicoProveedor, "", new { @class = "text-danger" })*@
             </div>
         </div>
-
-
 
         <div class="form-group">
             @Html.LabelFor(model => model.estado, "Estado", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -100,8 +98,8 @@
                }
            })
             </div>
-            @Html.HiddenFor(model => model.Usuario.idUsuario, new { Value = Session["idUsuario"] })
-            @Html.HiddenFor(model => model.Usuario.fechaRegistro, new { Value = @DateTime.Now.ToString("dd/MM/yyyy") })
+            @Html.HiddenFor(model => model.idUsuario, new { Value = Session["idUsuario"] })
+            @Html.HiddenFor(model => model.fechaRegistro, new { Value = @DateTime.Now.ToString("dd/MM/yyyy") })
         </div>
         @Html.Partial("_BtnFrmCreatePartial")
     </div>

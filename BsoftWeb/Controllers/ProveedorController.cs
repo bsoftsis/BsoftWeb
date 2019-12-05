@@ -15,7 +15,7 @@ namespace BsoftWeb.Controllers
     {
         private BsoftDBModel db = new BsoftDBModel();
 
-        // GET: Proveedor
+        // GET: Proveedor/Evaluacion/5
         public ActionResult Evaluacion(int? id)
         {
             
@@ -37,8 +37,6 @@ namespace BsoftWeb.Controllers
 
 
             return View(proveedor);
-
-           
         }
 
         // GET: Proveedor
@@ -75,8 +73,6 @@ namespace BsoftWeb.Controllers
 
             //para el combo de niveles de estados
             ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoGeneral>();
-
-            //Proveedor proveedor = new Proveedor();
 
             return View();
         }
@@ -124,6 +120,10 @@ namespace BsoftWeb.Controllers
                 return HttpNotFound();
             }
             ViewBag.idLocalidad = new SelectList(db.Localidad, "idLocalidad", "nombreLocalidad", proveedor.idLocalidad);
+
+            //para el combo de niveles de estados
+            ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoGeneral>();
+
             return View(proveedor);
         }
 
@@ -131,11 +131,15 @@ namespace BsoftWeb.Controllers
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+       // 
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "idProveedor,razonSocial,cuit,domicilio,telefono,celular,email,estado,fechaRegistro,idLocalidad")] Proveedor proveedor)
+        public ActionResult Edit([Bind(Include = "idProveedor,razonSocial,cuit,domicilio,telefono,celular,email,idLocalidad,estado,fechaRegistro")] Proveedor proveedor)
         {
             if (ModelState.IsValid)
             {
+                ////pasa el estado de numero a cadena de caracteres
+                proveedor.estado = Enum.GetName(typeof(EstadoGeneral), Convert.ToInt32(proveedor.estado));
+              
                 db.Entry(proveedor).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

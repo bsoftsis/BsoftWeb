@@ -1,7 +1,7 @@
 ﻿@model BsoftWeb.Models.Proveedor
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Editar";
 }
 
 <h2>Edit</h2>
@@ -10,7 +10,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Proveedor</h4>
         <hr />
@@ -66,30 +66,23 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.estado, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.fechaRegistro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.fechaRegistro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.fechaRegistro, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.idLocalidad, "idLocalidad", htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.idLocalidad, "Localidad", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownList("idLocalidad", null, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.idLocalidad, "", new { @class = "text-danger" })
             </div>
         </div>
 
-        
+        <div class="form-group">
+            @Html.LabelFor(model => model.estado, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("estado", (IEnumerable<SelectListItem>)ViewBag.ListaEstado, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.estado, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.fechaRegistro)
+
         @Html.Partial("_BtnFrmCreatePartial")
     </div>
 }

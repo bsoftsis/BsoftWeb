@@ -6,7 +6,7 @@
 
 <h2>Borrar</h2>
 
-<h3>¿Esta seguro de borrar este Usuario?</h3>
+<h3>¿Seguro de Borrar este Usuario?</h3>
 <div>
     <hr />
     <dl class="dl-horizontal">
@@ -60,14 +60,15 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @Html.Partial("_BtnFrmDeletePartial")
+
+    @*@using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
-        
-        <div class="form-actions no-color">
+            <div class="form-actions no-color">
             <button type="button" class="btn-sm">
                 @Html.ActionLink("Cancelar", "Index", null, new { @class = "" })
             </button>
             <input type="submit" value="Borrar" class="btn btn-primary btn-sm" />
         </div>
-    }
+    }*@
 </div>

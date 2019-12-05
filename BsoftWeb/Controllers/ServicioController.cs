@@ -67,8 +67,6 @@ namespace BsoftWeb.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-        
             return View();
         }
 
@@ -86,6 +84,13 @@ namespace BsoftWeb.Controllers
             }
             ViewBag.idTecnicoProveedor = new SelectList(db.TecnicoProveedor, "idTecnicoProveedor", "nombre", servicio.idTecnicoProveedor);
             ViewBag.idUsuario = new SelectList(db.Usuario, "idUsuario", "nombreUsuario", servicio.idUsuario);
+            
+            //para el combo de niveles de estados
+            ViewBag.ListaEstado = HTMLSelect.ToListSelectListItem<EstadoServicio>();
+            //niveles de calidad
+            ViewBag.ListaCalidad = HTMLSelect.ToListSelectListItem<NivelCalidad>();
+
+
             return View(servicio);
         }
 
@@ -98,6 +103,9 @@ namespace BsoftWeb.Controllers
         {
             if (ModelState.IsValid)
             {
+                //pasa el estado de numero a cadena de caracteres
+                servicio.estado = Enum.GetName(typeof(EstadoServicio), Convert.ToInt32(servicio.estado));
+
                 db.Entry(servicio).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
